@@ -1,0 +1,37 @@
+2025-08-19 00:41:35.228 +01:00 [INF] Executed DbCommand (206ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-08-19 00:41:37.766 +01:00 [INF] Executed DbCommand (151ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+);
+2025-08-19 00:41:37.797 +01:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-08-19 00:41:37.979 +01:00 [INF] Executed DbCommand (131ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE
+2025-08-19 00:41:38.095 +01:00 [INF] Executed DbCommand (115ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-08-19 00:41:38.107 +01:00 [INF] No migrations were applied. The database is already up to date.
+2025-08-19 00:41:39.403 +01:00 [INF] Executed DbCommand (92ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetRoles" AS a)
+2025-08-19 00:41:39.563 +01:00 [INF] Executed DbCommand (109ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetUsers" AS a)
+2025-08-19 00:41:39.981 +01:00 [INF] User profile is available. Using 'C:\Users\Naits\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-08-19 00:41:42.267 +01:00 [INF] SQS Message Processing Service is starting.
+2025-08-19 00:41:42.267 +01:00 [INF] Polling for SQS messages...
+2025-08-19 00:41:42.679 +01:00 [INF] Found credentials using the AWS SDK's default credential search
+2025-08-19 00:41:49.932 +01:00 [INF] Now listening on: https://localhost:54407
+2025-08-19 00:41:49.932 +01:00 [INF] Now listening on: http://localhost:54408
+2025-08-19 00:41:50.736 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-08-19 00:41:50.736 +01:00 [INF] Hosting environment: Development
+2025-08-19 00:41:50.736 +01:00 [INF] Content root path: C:\Projects\iRechargeTestProject2nd\iRechargeTestProject.API
+2025-08-19 00:41:51.186 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/index.html - null null
+2025-08-19 00:41:51.936 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/index.html - 200 null text/html;charset=utf-8 803.5604ms
