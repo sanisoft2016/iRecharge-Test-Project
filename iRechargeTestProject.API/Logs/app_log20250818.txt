@@ -1,0 +1,1765 @@
+2025-08-18 12:02:22.609 +01:00 [INF] Executed DbCommand (105ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-08-18 12:09:57.059 +01:00 [INF] Executed DbCommand (77ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-08-18 12:09:59.376 +01:00 [INF] Executed DbCommand (117ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+);
+2025-08-18 12:09:59.408 +01:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-08-18 12:09:59.555 +01:00 [INF] Executed DbCommand (144ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE
+2025-08-18 12:09:59.581 +01:00 [INF] Executed DbCommand (25ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-08-18 12:09:59.605 +01:00 [INF] Applying migration '20250818110756_InitialCreate4th'.
+2025-08-18 12:09:59.727 +01:00 [INF] Executed DbCommand (61ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE "Orders" DROP COLUMN "CustomerName";
+2025-08-18 12:09:59.766 +01:00 [INF] Executed DbCommand (38ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE "Orders" ADD "CustomerId" character varying(40) NOT NULL DEFAULT '';
+2025-08-18 12:09:59.801 +01:00 [INF] Executed DbCommand (35ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_Orders_CustomerId" ON "Orders" ("CustomerId");
+2025-08-18 12:09:59.818 +01:00 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_Orders_ProductId" ON "Orders" ("ProductId");
+2025-08-18 12:09:59.885 +01:00 [INF] Executed DbCommand (66ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE "Orders" ADD CONSTRAINT "FK_Orders_AspNetUsers_CustomerId" FOREIGN KEY ("CustomerId") REFERENCES "AspNetUsers" ("Id") ON DELETE CASCADE;
+2025-08-18 12:09:59.916 +01:00 [INF] Executed DbCommand (31ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE "Orders" ADD CONSTRAINT "FK_Orders_Products_ProductId" FOREIGN KEY ("ProductId") REFERENCES "Products" ("Id") ON DELETE CASCADE;
+2025-08-18 12:09:59.933 +01:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20250818110756_InitialCreate4th', '9.0.3');
+2025-08-18 12:10:01.010 +01:00 [INF] Executed DbCommand (42ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetRoles" AS a)
+2025-08-18 12:10:01.082 +01:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetUsers" AS a)
+2025-08-18 12:10:01.232 +01:00 [INF] User profile is available. Using 'C:\Users\Naits\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-08-18 12:10:03.222 +01:00 [INF] Now listening on: https://localhost:59759
+2025-08-18 12:10:03.222 +01:00 [INF] Now listening on: http://localhost:59760
+2025-08-18 12:10:03.539 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-08-18 12:10:03.540 +01:00 [INF] Hosting environment: Development
+2025-08-18 12:10:03.540 +01:00 [INF] Content root path: C:\Projects\iRechargeTestProject2nd\iRechargeTestProject.API
+2025-08-18 12:11:06.329 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/index.html - null null
+2025-08-18 12:11:07.744 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/index.html - 200 null text/html;charset=utf-8 1475.2084ms
+2025-08-18 12:11:08.127 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 12:11:08.194 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 67.4461ms
+2025-08-18 12:11:08.248 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/index.js - null null
+2025-08-18 12:11:08.261 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/index.js - 200 null application/javascript;charset=utf-8 12.6398ms
+2025-08-18 12:11:09.546 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 12:11:09.636 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 89.4373ms
+2025-08-18 12:20:44.723 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7045/api/Product - application/json 66
+2025-08-18 12:20:44.761 +01:00 [INF] CORS policy execution failed.
+2025-08-18 12:20:44.762 +01:00 [INF] Request origin https://localhost:7045 does not have permission to access the resource.
+2025-08-18 12:20:44.792 +01:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-08-18 12:20:44.808 +01:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-08-18 12:20:44.810 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7045/api/Product - 401 0 null 87.3258ms
+2025-08-18 12:24:28.764 +01:00 [INF] Executed DbCommand (239ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-08-18 12:24:32.590 +01:00 [INF] Executed DbCommand (546ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+);
+2025-08-18 12:24:32.621 +01:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-08-18 12:24:33.409 +01:00 [INF] Executed DbCommand (771ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE
+2025-08-18 12:24:33.581 +01:00 [INF] Executed DbCommand (170ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-08-18 12:24:33.595 +01:00 [INF] No migrations were applied. The database is already up to date.
+2025-08-18 12:24:35.244 +01:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetRoles" AS a)
+2025-08-18 12:24:35.309 +01:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetUsers" AS a)
+2025-08-18 12:24:35.515 +01:00 [INF] User profile is available. Using 'C:\Users\Naits\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-08-18 12:24:37.706 +01:00 [INF] Now listening on: https://localhost:60692
+2025-08-18 12:24:37.740 +01:00 [INF] Now listening on: http://localhost:60693
+2025-08-18 12:24:38.608 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-08-18 12:24:38.609 +01:00 [INF] Hosting environment: Development
+2025-08-18 12:24:38.609 +01:00 [INF] Content root path: C:\Projects\iRechargeTestProject2nd\iRechargeTestProject.API
+2025-08-18 12:24:40.475 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 12:24:41.377 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 947.8868ms
+2025-08-18 12:28:32.030 +01:00 [INF] Executed DbCommand (90ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-08-18 12:28:34.052 +01:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+);
+2025-08-18 12:28:34.090 +01:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-08-18 12:28:34.216 +01:00 [INF] Executed DbCommand (120ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE
+2025-08-18 12:28:34.403 +01:00 [INF] Executed DbCommand (186ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-08-18 12:28:34.417 +01:00 [INF] No migrations were applied. The database is already up to date.
+2025-08-18 12:28:36.511 +01:00 [INF] Executed DbCommand (191ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetRoles" AS a)
+2025-08-18 12:28:37.017 +01:00 [INF] Executed DbCommand (432ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetUsers" AS a)
+2025-08-18 12:28:37.328 +01:00 [INF] User profile is available. Using 'C:\Users\Naits\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-08-18 12:28:39.968 +01:00 [INF] Now listening on: https://localhost:61111
+2025-08-18 12:28:39.968 +01:00 [INF] Now listening on: http://localhost:61112
+2025-08-18 12:28:40.663 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-08-18 12:28:40.664 +01:00 [INF] Hosting environment: Development
+2025-08-18 12:28:40.664 +01:00 [INF] Content root path: C:\Projects\iRechargeTestProject2nd\iRechargeTestProject.API
+2025-08-18 12:28:41.436 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/index.html - null null
+2025-08-18 12:28:42.601 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/index.html - 200 null text/html;charset=utf-8 1228.737ms
+2025-08-18 12:28:43.017 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 12:28:43.054 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/index.js - null null
+2025-08-18 12:28:43.081 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/index.js - 200 null application/javascript;charset=utf-8 26.6911ms
+2025-08-18 12:28:43.100 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 84.2225ms
+2025-08-18 12:28:43.467 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 12:28:43.578 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 111.2949ms
+2025-08-18 12:30:16.588 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7045/api/Product/create-product - application/json 68
+2025-08-18 12:30:16.601 +01:00 [INF] CORS policy execution failed.
+2025-08-18 12:30:16.603 +01:00 [INF] Request origin https://localhost:7045 does not have permission to access the resource.
+2025-08-18 12:30:16.616 +01:00 [INF] Executing endpoint 'Ecommerce.ProductService.Controllers.ProductController.AddProductAsync (iRechargeTestProject.API)'
+2025-08-18 12:30:16.696 +01:00 [INF] Route matched with {action = "AddProduct", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddProductAsync(iRechargeTestProject.Domain.Entities.ProductModel) on controller Ecommerce.ProductService.Controllers.ProductController (iRechargeTestProject.API).
+2025-08-18 12:30:16.851 +01:00 [INF] Executing action method Ecommerce.ProductService.Controllers.ProductController.AddProductAsync (iRechargeTestProject.API) - Validation state: "Valid"
+2025-08-18 12:30:33.650 +01:00 [INF] Executed DbCommand (57ms) [Parameters=[@p0='?', @p1='?' (DbType = Decimal), @p2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Products" ("Name", "Price", "Quantity")
+VALUES (@p0, @p1, @p2)
+RETURNING "Id";
+2025-08-18 12:31:08.429 +01:00 [INF] Executed action method Ecommerce.ProductService.Controllers.ProductController.AddProductAsync (iRechargeTestProject.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 51561.3906ms.
+2025-08-18 12:31:08.480 +01:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`2[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[iRechargeTestProject.Domain.Entities.ProductModel, iRechargeTestProject.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-18 12:31:08.562 +01:00 [INF] Executed action Ecommerce.ProductService.Controllers.ProductController.AddProductAsync (iRechargeTestProject.API) in 51849.9393ms
+2025-08-18 12:31:08.568 +01:00 [INF] Executed endpoint 'Ecommerce.ProductService.Controllers.ProductController.AddProductAsync (iRechargeTestProject.API)'
+2025-08-18 12:31:08.588 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7045/api/Product/create-product - 200 null application/json; charset=utf-8 51999.8257ms
+2025-08-18 12:31:54.676 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/api/Product/list - null null
+2025-08-18 12:31:54.681 +01:00 [INF] Executing endpoint 'Ecommerce.ProductService.Controllers.ProductController.GetProductsAsync (iRechargeTestProject.API)'
+2025-08-18 12:31:54.692 +01:00 [INF] Route matched with {action = "GetProducts", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProductsAsync() on controller Ecommerce.ProductService.Controllers.ProductController (iRechargeTestProject.API).
+2025-08-18 12:31:54.696 +01:00 [INF] Executing action method Ecommerce.ProductService.Controllers.ProductController.GetProductsAsync (iRechargeTestProject.API) - Validation state: "Valid"
+2025-08-18 12:31:54.885 +01:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT p."Id", p."Name", p."Price", p."Quantity"
+FROM "Products" AS p
+2025-08-18 12:31:54.899 +01:00 [INF] Executed action method Ecommerce.ProductService.Controllers.ProductController.GetProductsAsync (iRechargeTestProject.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 203.0437ms.
+2025-08-18 12:31:54.900 +01:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`2[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[iRechargeTestProject.Domain.Entities.ProductModel, iRechargeTestProject.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-08-18 12:31:54.905 +01:00 [INF] Executed action Ecommerce.ProductService.Controllers.ProductController.GetProductsAsync (iRechargeTestProject.API) in 212.31ms
+2025-08-18 12:31:54.905 +01:00 [INF] Executed endpoint 'Ecommerce.ProductService.Controllers.ProductController.GetProductsAsync (iRechargeTestProject.API)'
+2025-08-18 12:31:54.906 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/api/Product/list - 200 null application/json; charset=utf-8 230.2596ms
+2025-08-18 13:06:30.183 +01:00 [INF] Executed DbCommand (224ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-08-18 13:13:00.576 +01:00 [INF] Executed DbCommand (228ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-08-18 13:13:02.278 +01:00 [INF] Executed DbCommand (43ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+);
+2025-08-18 13:13:02.316 +01:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-08-18 13:13:02.327 +01:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE
+2025-08-18 13:13:02.331 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-08-18 13:13:02.363 +01:00 [INF] Applying migration '20250818121106_InitialCreate5th'.
+2025-08-18 13:13:02.467 +01:00 [INF] Executed DbCommand (51ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE "AspNetUsers" ADD "UserType" smallint NOT NULL DEFAULT 0;
+2025-08-18 13:13:02.494 +01:00 [INF] Executed DbCommand (27ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20250818121106_InitialCreate5th', '9.0.3');
+2025-08-18 13:13:03.898 +01:00 [INF] Executed DbCommand (28ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetRoles" AS a)
+2025-08-18 13:13:04.000 +01:00 [INF] Executed DbCommand (25ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetUsers" AS a)
+2025-08-18 13:13:04.129 +01:00 [INF] User profile is available. Using 'C:\Users\Naits\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-08-18 13:13:05.711 +01:00 [INF] Now listening on: https://localhost:64338
+2025-08-18 13:13:05.711 +01:00 [INF] Now listening on: http://localhost:64339
+2025-08-18 13:13:06.037 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-08-18 13:13:06.038 +01:00 [INF] Hosting environment: Development
+2025-08-18 13:13:06.039 +01:00 [INF] Content root path: C:\Projects\iRechargeTestProject2nd\iRechargeTestProject.API
+2025-08-18 13:22:44.710 +01:00 [ERR] An error occurred using the connection to database 'irechargeDb2nd' on server 'tcp://localhost:60518'.
+2025-08-18 13:22:49.704 +01:00 [INF] Executed DbCommand (990ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE DATABASE "irechargeDb2nd";
+2025-08-18 13:22:50.312 +01:00 [INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+);
+2025-08-18 13:22:50.348 +01:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-08-18 13:22:50.375 +01:00 [INF] Executed DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE
+2025-08-18 13:22:50.398 +01:00 [INF] Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-08-18 13:22:50.438 +01:00 [INF] Applying migration '20250817134303_InitialCreate'.
+2025-08-18 13:22:50.599 +01:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "AspNetRoles" (
+    "Id" character varying(40) NOT NULL,
+    "Name" character varying(20),
+    "NormalizedName" character varying(20),
+    "ConcurrencyStamp" text,
+    CONSTRAINT "PK_AspNetRoles" PRIMARY KEY ("Id")
+);
+2025-08-18 13:22:50.623 +01:00 [INF] Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "AspNetUsers" (
+    "Id" character varying(40) NOT NULL,
+    "AccessStatus" smallint NOT NULL,
+    "FirstName" character varying(30) NOT NULL,
+    "LastName" character varying(30) NOT NULL,
+    "Gender" smallint NOT NULL,
+    "CurrentStatus" smallint NOT NULL,
+    "State" character varying(25) NOT NULL,
+    "Town" character varying(25) NOT NULL,
+    "UserName" character varying(50),
+    "NormalizedUserName" character varying(50),
+    "Email" character varying(50),
+    "NormalizedEmail" character varying(50),
+    "EmailConfirmed" boolean NOT NULL,
+    "PasswordHash" text,
+    "SecurityStamp" text,
+    "ConcurrencyStamp" text,
+    "PhoneNumber" text,
+    "PhoneNumberConfirmed" boolean NOT NULL,
+    "TwoFactorEnabled" boolean NOT NULL,
+    "LockoutEnd" timestamp with time zone,
+    "LockoutEnabled" boolean NOT NULL,
+    "AccessFailedCount" integer NOT NULL,
+    CONSTRAINT "PK_AspNetUsers" PRIMARY KEY ("Id")
+);
+2025-08-18 13:22:50.638 +01:00 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Orders" (
+    "Id" integer GENERATED BY DEFAULT AS IDENTITY,
+    "CustomerName" character varying(30) NOT NULL,
+    "ProductId" integer NOT NULL,
+    "Quantity" integer NOT NULL,
+    "OrderDate" timestamp with time zone NOT NULL,
+    CONSTRAINT "PK_Orders" PRIMARY KEY ("Id")
+);
+2025-08-18 13:22:50.654 +01:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Products" (
+    "Id" integer GENERATED BY DEFAULT AS IDENTITY,
+    "Name" character varying(30) NOT NULL,
+    "Price" numeric NOT NULL,
+    "Quantity" integer NOT NULL,
+    CONSTRAINT "PK_Products" PRIMARY KEY ("Id")
+);
+2025-08-18 13:22:50.673 +01:00 [INF] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "AspNetRoleClaims" (
+    "Id" integer GENERATED BY DEFAULT AS IDENTITY,
+    "RoleId" character varying(40) NOT NULL,
+    "ClaimType" text,
+    "ClaimValue" text,
+    CONSTRAINT "PK_AspNetRoleClaims" PRIMARY KEY ("Id"),
+    CONSTRAINT "FK_AspNetRoleClaims_AspNetRoles_RoleId" FOREIGN KEY ("RoleId") REFERENCES "AspNetRoles" ("Id") ON DELETE CASCADE
+);
+2025-08-18 13:22:50.683 +01:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "AspNetUserClaims" (
+    "Id" integer GENERATED BY DEFAULT AS IDENTITY,
+    "UserId" character varying(40) NOT NULL,
+    "ClaimType" text,
+    "ClaimValue" text,
+    CONSTRAINT "PK_AspNetUserClaims" PRIMARY KEY ("Id"),
+    CONSTRAINT "FK_AspNetUserClaims_AspNetUsers_UserId" FOREIGN KEY ("UserId") REFERENCES "AspNetUsers" ("Id") ON DELETE CASCADE
+);
+2025-08-18 13:22:50.715 +01:00 [INF] Executed DbCommand (31ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "AspNetUserLogins" (
+    "LoginProvider" text NOT NULL,
+    "ProviderKey" text NOT NULL,
+    "ProviderDisplayName" text,
+    "UserId" character varying(40) NOT NULL,
+    CONSTRAINT "PK_AspNetUserLogins" PRIMARY KEY ("LoginProvider", "ProviderKey"),
+    CONSTRAINT "FK_AspNetUserLogins_AspNetUsers_UserId" FOREIGN KEY ("UserId") REFERENCES "AspNetUsers" ("Id") ON DELETE CASCADE
+);
+2025-08-18 13:22:50.730 +01:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "AspNetUserRoles" (
+    "UserId" character varying(40) NOT NULL,
+    "RoleId" character varying(40) NOT NULL,
+    CONSTRAINT "PK_AspNetUserRoles" PRIMARY KEY ("UserId", "RoleId"),
+    CONSTRAINT "FK_AspNetUserRoles_AspNetRoles_RoleId" FOREIGN KEY ("RoleId") REFERENCES "AspNetRoles" ("Id") ON DELETE CASCADE,
+    CONSTRAINT "FK_AspNetUserRoles_AspNetUsers_UserId" FOREIGN KEY ("UserId") REFERENCES "AspNetUsers" ("Id") ON DELETE CASCADE
+);
+2025-08-18 13:22:50.742 +01:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "AspNetUserTokens" (
+    "UserId" character varying(40) NOT NULL,
+    "LoginProvider" text NOT NULL,
+    "Name" text NOT NULL,
+    "Value" text,
+    CONSTRAINT "PK_AspNetUserTokens" PRIMARY KEY ("UserId", "LoginProvider", "Name"),
+    CONSTRAINT "FK_AspNetUserTokens_AspNetUsers_UserId" FOREIGN KEY ("UserId") REFERENCES "AspNetUsers" ("Id") ON DELETE CASCADE
+);
+2025-08-18 13:22:50.748 +01:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_AspNetRoleClaims_RoleId" ON "AspNetRoleClaims" ("RoleId");
+2025-08-18 13:22:50.760 +01:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "IX_AspNetRoles_Name" ON "AspNetRoles" ("Name");
+2025-08-18 13:22:50.765 +01:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "RoleNameIndex" ON "AspNetRoles" ("NormalizedName");
+2025-08-18 13:22:50.775 +01:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_AspNetUserClaims_UserId" ON "AspNetUserClaims" ("UserId");
+2025-08-18 13:22:50.791 +01:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_AspNetUserLogins_UserId" ON "AspNetUserLogins" ("UserId");
+2025-08-18 13:22:50.812 +01:00 [INF] Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_AspNetUserRoles_RoleId" ON "AspNetUserRoles" ("RoleId");
+2025-08-18 13:22:50.832 +01:00 [INF] Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_AspNetUserRoles_UserId" ON "AspNetUserRoles" ("UserId");
+2025-08-18 13:22:50.855 +01:00 [INF] Executed DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "EmailIndex" ON "AspNetUsers" ("NormalizedEmail");
+2025-08-18 13:22:50.861 +01:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "IX_AspNetUsers_PhoneNumber" ON "AspNetUsers" ("PhoneNumber");
+2025-08-18 13:22:50.873 +01:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "IX_AspNetUsers_UserName" ON "AspNetUsers" ("UserName");
+2025-08-18 13:22:50.911 +01:00 [INF] Executed DbCommand (37ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "UserNameIndex" ON "AspNetUsers" ("NormalizedUserName");
+2025-08-18 13:22:50.926 +01:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20250817134303_InitialCreate', '9.0.3');
+2025-08-18 13:22:50.927 +01:00 [INF] Applying migration '20250817164206_InitialCreate2nd'.
+2025-08-18 13:22:50.982 +01:00 [INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Logs" (
+    "Id" integer GENERATED BY DEFAULT AS IDENTITY,
+    "Message" text NOT NULL,
+    "MessageTemplate" text NOT NULL,
+    "Level" character varying(128) NOT NULL,
+    "TimeStamp" timestamp with time zone NOT NULL,
+    "Exception" text NOT NULL,
+    "Properties" text NOT NULL,
+    CONSTRAINT "PK_Logs" PRIMARY KEY ("Id")
+);
+2025-08-18 13:22:50.999 +01:00 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20250817164206_InitialCreate2nd', '9.0.3');
+2025-08-18 13:22:51.000 +01:00 [INF] Applying migration '20250817165833_InitialCreate3rd'.
+2025-08-18 13:22:51.041 +01:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DROP TABLE "Logs";
+2025-08-18 13:22:51.046 +01:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20250817165833_InitialCreate3rd', '9.0.3');
+2025-08-18 13:22:51.047 +01:00 [INF] Applying migration '20250818110756_InitialCreate4th'.
+2025-08-18 13:22:51.097 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE "Orders" DROP COLUMN "CustomerName";
+2025-08-18 13:22:51.112 +01:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE "Orders" ADD "CustomerId" character varying(40) NOT NULL DEFAULT '';
+2025-08-18 13:22:51.126 +01:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_Orders_CustomerId" ON "Orders" ("CustomerId");
+2025-08-18 13:22:51.147 +01:00 [INF] Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_Orders_ProductId" ON "Orders" ("ProductId");
+2025-08-18 13:22:51.172 +01:00 [INF] Executed DbCommand (25ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE "Orders" ADD CONSTRAINT "FK_Orders_AspNetUsers_CustomerId" FOREIGN KEY ("CustomerId") REFERENCES "AspNetUsers" ("Id") ON DELETE CASCADE;
+2025-08-18 13:22:51.180 +01:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE "Orders" ADD CONSTRAINT "FK_Orders_Products_ProductId" FOREIGN KEY ("ProductId") REFERENCES "Products" ("Id") ON DELETE CASCADE;
+2025-08-18 13:22:51.191 +01:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20250818110756_InitialCreate4th', '9.0.3');
+2025-08-18 13:22:51.192 +01:00 [INF] Applying migration '20250818121106_InitialCreate5th'.
+2025-08-18 13:22:51.225 +01:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE "AspNetUsers" ADD "UserType" smallint NOT NULL DEFAULT 0;
+2025-08-18 13:22:51.232 +01:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20250818121106_InitialCreate5th', '9.0.3');
+2025-08-18 13:22:52.291 +01:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetRoles" AS a)
+2025-08-18 13:22:52.971 +01:00 [INF] Executed DbCommand (32ms) [Parameters=[@p0='?', @p1='?', @p2='?', @p3='?', @p4='?', @p5='?', @p6='?', @p7='?', @p8='?', @p9='?', @p10='?', @p11='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AspNetRoles" ("Id", "ConcurrencyStamp", "Name", "NormalizedName")
+VALUES (@p0, @p1, @p2, @p3);
+INSERT INTO "AspNetRoles" ("Id", "ConcurrencyStamp", "Name", "NormalizedName")
+VALUES (@p4, @p5, @p6, @p7);
+INSERT INTO "AspNetRoles" ("Id", "ConcurrencyStamp", "Name", "NormalizedName")
+VALUES (@p8, @p9, @p10, @p11);
+2025-08-18 13:22:53.036 +01:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetUsers" AS a)
+2025-08-18 13:22:54.910 +01:00 [INF] Executed DbCommand (451ms) [Parameters=[@p0='?', @p1='?' (DbType = Int32), @p2='?' (DbType = Int16), @p3='?', @p4='?' (DbType = Int16), @p5='?', @p6='?' (DbType = Boolean), @p7='?', @p8='?' (DbType = Int16), @p9='?', @p10='?' (DbType = Boolean), @p11='?' (DbType = DateTime), @p12='?', @p13='?', @p14='?', @p15='?', @p16='?' (DbType = Boolean), @p17='?', @p18='?', @p19='?', @p20='?' (DbType = Boolean), @p21='?', @p22='?' (DbType = Int16), @p23='?', @p24='?' (DbType = Int32), @p25='?' (DbType = Int16), @p26='?', @p27='?' (DbType = Int16), @p28='?', @p29='?' (DbType = Boolean), @p30='?', @p31='?' (DbType = Int16), @p32='?', @p33='?' (DbType = Boolean), @p34='?' (DbType = DateTime), @p35='?', @p36='?', @p37='?', @p38='?', @p39='?' (DbType = Boolean), @p40='?', @p41='?', @p42='?', @p43='?' (DbType = Boolean), @p44='?', @p45='?' (DbType = Int16)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AspNetUsers" ("Id", "AccessFailedCount", "AccessStatus", "ConcurrencyStamp", "CurrentStatus", "Email", "EmailConfirmed", "FirstName", "Gender", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "State", "Town", "TwoFactorEnabled", "UserName", "UserType")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22);
+INSERT INTO "AspNetUsers" ("Id", "AccessFailedCount", "AccessStatus", "ConcurrencyStamp", "CurrentStatus", "Email", "EmailConfirmed", "FirstName", "Gender", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "State", "Town", "TwoFactorEnabled", "UserName", "UserType")
+VALUES (@p23, @p24, @p25, @p26, @p27, @p28, @p29, @p30, @p31, @p32, @p33, @p34, @p35, @p36, @p37, @p38, @p39, @p40, @p41, @p42, @p43, @p44, @p45);
+2025-08-18 13:22:55.422 +01:00 [INF] Executed DbCommand (78ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."Name" = 'SuperAdmin'
+LIMIT 2
+2025-08-18 13:22:55.537 +01:00 [INF] Executed DbCommand (78ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."Name" = 'Admin'
+LIMIT 2
+2025-08-18 13:22:55.665 +01:00 [INF] Executed DbCommand (87ms) [Parameters=[@p0='?', @p1='?', @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AspNetUserRoles" ("RoleId", "UserId")
+VALUES (@p0, @p1);
+INSERT INTO "AspNetUserRoles" ("RoleId", "UserId")
+VALUES (@p2, @p3);
+2025-08-18 13:22:55.996 +01:00 [INF] User profile is available. Using 'C:\Users\Naits\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-08-18 13:22:57.315 +01:00 [INF] Now listening on: https://localhost:65227
+2025-08-18 13:22:57.317 +01:00 [INF] Now listening on: http://localhost:65236
+2025-08-18 13:22:57.595 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-08-18 13:22:57.595 +01:00 [INF] Hosting environment: Development
+2025-08-18 13:22:57.595 +01:00 [INF] Content root path: C:\Projects\iRechargeTestProject2nd\iRechargeTestProject.API
+2025-08-18 13:25:30.560 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5254/swagger - null null
+2025-08-18 13:25:31.020 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5254/swagger - 301 0 null 559.5783ms
+2025-08-18 13:25:31.038 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5254/swagger/index.html - null null
+2025-08-18 13:25:31.367 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5254/swagger/index.html - 200 null text/html;charset=utf-8 329.6292ms
+2025-08-18 13:25:31.592 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5254/swagger/index.css - null null
+2025-08-18 13:25:31.605 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5254/swagger/swagger-ui.css - null null
+2025-08-18 13:25:31.606 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5254/swagger/swagger-ui-bundle.js - null null
+2025-08-18 13:25:31.608 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5254/swagger/index.js - null null
+2025-08-18 13:25:31.611 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5254/swagger/index.js - 200 null application/javascript;charset=utf-8 2.9583ms
+2025-08-18 13:25:31.618 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5254/swagger/swagger-ui-standalone-preset.js - null null
+2025-08-18 13:25:31.635 +01:00 [INF] Sending file. Request path: '/index.css'. Physical path: 'N/A'
+2025-08-18 13:25:31.636 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5254/swagger/index.css - 200 202 text/css 43.8223ms
+2025-08-18 13:25:31.637 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5254/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 13:25:31.642 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5254/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 4.5355ms
+2025-08-18 13:25:31.693 +01:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2025-08-18 13:25:31.693 +01:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2025-08-18 13:25:31.704 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5254/swagger/swagger-ui-standalone-preset.js - 200 229223 text/javascript 85.5905ms
+2025-08-18 13:25:31.704 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5254/swagger/swagger-ui.css - 200 154948 text/css 99.1595ms
+2025-08-18 13:25:31.741 +01:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2025-08-18 13:25:31.741 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5254/swagger/swagger-ui-bundle.js - 200 1466324 text/javascript 135.0067ms
+2025-08-18 13:25:33.051 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5254/swagger/v1/swagger.json - null null
+2025-08-18 13:25:33.119 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5254/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 68.4425ms
+2025-08-18 13:25:33.140 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5254/swagger/favicon-32x32.png - null null
+2025-08-18 13:25:33.141 +01:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2025-08-18 13:25:33.141 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5254/swagger/favicon-32x32.png - 200 628 image/png 2.9167ms
+2025-08-18 13:25:45.706 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 13:25:45.735 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 30.0255ms
+2025-08-18 13:25:46.098 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 13:25:46.135 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 36.9767ms
+2025-08-18 13:26:39.092 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/index.html - null null
+2025-08-18 13:26:39.093 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/index.html - 200 null text/html;charset=utf-8 1.8119ms
+2025-08-18 13:26:39.674 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 13:26:39.675 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 1.2999ms
+2025-08-18 13:26:39.729 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/index.js - null null
+2025-08-18 13:26:39.737 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/index.js - 200 null application/javascript;charset=utf-8 7.5031ms
+2025-08-18 13:26:40.662 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 13:26:40.687 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 25.4378ms
+2025-08-18 13:29:33.212 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7045/api/Product/create-product - application/json 66
+2025-08-18 13:29:33.225 +01:00 [INF] CORS policy execution failed.
+2025-08-18 13:29:33.226 +01:00 [INF] Request origin https://localhost:7045 does not have permission to access the resource.
+2025-08-18 13:29:33.240 +01:00 [INF] Executing endpoint 'Ecommerce.ProductService.Controllers.ProductController.AddProductAsync (iRechargeTestProject.API)'
+2025-08-18 13:29:33.314 +01:00 [INF] Route matched with {action = "AddProduct", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddProductAsync(iRechargeTestProject.Domain.Entities.ProductModel) on controller Ecommerce.ProductService.Controllers.ProductController (iRechargeTestProject.API).
+2025-08-18 13:29:33.449 +01:00 [INF] Executing action method Ecommerce.ProductService.Controllers.ProductController.AddProductAsync (iRechargeTestProject.API) - Validation state: "Valid"
+2025-08-18 13:29:40.663 +01:00 [INF] Executed DbCommand (211ms) [Parameters=[@p0='?', @p1='?' (DbType = Decimal), @p2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Products" ("Name", "Price", "Quantity")
+VALUES (@p0, @p1, @p2)
+RETURNING "Id";
+2025-08-18 13:29:40.827 +01:00 [INF] Executed action method Ecommerce.ProductService.Controllers.ProductController.AddProductAsync (iRechargeTestProject.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 7367.2016ms.
+2025-08-18 13:29:40.860 +01:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`2[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[iRechargeTestProject.Domain.Entities.ProductModel, iRechargeTestProject.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-18 13:29:40.953 +01:00 [INF] Executed action Ecommerce.ProductService.Controllers.ProductController.AddProductAsync (iRechargeTestProject.API) in 7620.5422ms
+2025-08-18 13:29:40.955 +01:00 [INF] Executed endpoint 'Ecommerce.ProductService.Controllers.ProductController.AddProductAsync (iRechargeTestProject.API)'
+2025-08-18 13:29:40.998 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7045/api/Product/create-product - 200 null application/json; charset=utf-8 7785.7019ms
+2025-08-18 13:33:59.061 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7045/api/Account/register-customer-user - application/json 227
+2025-08-18 13:33:59.065 +01:00 [INF] CORS policy execution failed.
+2025-08-18 13:33:59.065 +01:00 [INF] Request origin https://localhost:7045 does not have permission to access the resource.
+2025-08-18 13:33:59.066 +01:00 [INF] Executing endpoint 'iRechargeTestProject.API.Controllers.AccountController.CustomerSelfRegisteration (iRechargeTestProject.API)'
+2025-08-18 13:33:59.081 +01:00 [INF] Route matched with {action = "CustomerSelfRegisteration", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CustomerSelfRegisteration(iRechargeTestProject.Application.DTOs.UserDto) on controller iRechargeTestProject.API.Controllers.AccountController (iRechargeTestProject.API).
+2025-08-18 13:33:59.267 +01:00 [INF] Executing action method iRechargeTestProject.API.Controllers.AccountController.CustomerSelfRegisteration (iRechargeTestProject.API) - Validation state: "Valid"
+2025-08-18 13:34:07.843 +01:00 [INF] Executed DbCommand (148ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."AccessStatus", a."ConcurrencyStamp", a."CurrentStatus", a."Email", a."EmailConfirmed", a."FirstName", a."Gender", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."State", a."Town", a."TwoFactorEnabled", a."UserName", a."UserType"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2025-08-18 13:34:08.034 +01:00 [INF] Executed DbCommand (77ms) [Parameters=[@__userObj_PhoneNumber_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."AccessStatus", a."ConcurrencyStamp", a."CurrentStatus", a."Email", a."EmailConfirmed", a."FirstName", a."Gender", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."State", a."Town", a."TwoFactorEnabled", a."UserName", a."UserType"
+FROM "AspNetUsers" AS a
+WHERE a."PhoneNumber" = @__userObj_PhoneNumber_0
+LIMIT 1
+2025-08-18 13:34:08.565 +01:00 [INF] Executed DbCommand (28ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."AccessStatus", a."ConcurrencyStamp", a."CurrentStatus", a."Email", a."EmailConfirmed", a."FirstName", a."Gender", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."State", a."Town", a."TwoFactorEnabled", a."UserName", a."UserType"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2025-08-18 13:34:08.618 +01:00 [INF] Executed DbCommand (28ms) [Parameters=[@p0='?', @p1='?' (DbType = Int32), @p2='?' (DbType = Int16), @p3='?', @p4='?' (DbType = Int16), @p5='?', @p6='?' (DbType = Boolean), @p7='?', @p8='?' (DbType = Int16), @p9='?', @p10='?' (DbType = Boolean), @p11='?' (DbType = DateTime), @p12='?', @p13='?', @p14='?', @p15='?', @p16='?' (DbType = Boolean), @p17='?', @p18='?', @p19='?', @p20='?' (DbType = Boolean), @p21='?', @p22='?' (DbType = Int16)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AspNetUsers" ("Id", "AccessFailedCount", "AccessStatus", "ConcurrencyStamp", "CurrentStatus", "Email", "EmailConfirmed", "FirstName", "Gender", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "State", "Town", "TwoFactorEnabled", "UserName", "UserType")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22);
+2025-08-18 13:34:08.746 +01:00 [INF] Executed DbCommand (82ms) [Parameters=[@__normalizedRoleName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedRoleName_0
+LIMIT 2
+2025-08-18 13:34:08.899 +01:00 [INF] Executed DbCommand (66ms) [Parameters=[@__p_0='?', @__p_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."UserId", a."RoleId"
+FROM "AspNetUserRoles" AS a
+WHERE a."UserId" = @__p_0 AND a."RoleId" = @__p_1
+LIMIT 1
+2025-08-18 13:34:09.034 +01:00 [INF] Executed DbCommand (123ms) [Parameters=[@__normalizedRoleName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedRoleName_0
+LIMIT 2
+2025-08-18 13:34:09.116 +01:00 [INF] Executed DbCommand (75ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."AccessStatus", a."ConcurrencyStamp", a."CurrentStatus", a."Email", a."EmailConfirmed", a."FirstName", a."Gender", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."State", a."Town", a."TwoFactorEnabled", a."UserName", a."UserType"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2025-08-18 13:34:09.231 +01:00 [INF] Executed DbCommand (58ms) [Parameters=[@p0='?', @p1='?', @p24='?', @p2='?' (DbType = Int32), @p3='?' (DbType = Int16), @p4='?', @p25='?', @p5='?' (DbType = Int16), @p6='?', @p7='?' (DbType = Boolean), @p8='?', @p9='?' (DbType = Int16), @p10='?', @p11='?' (DbType = Boolean), @p12='?' (DbType = DateTime), @p13='?', @p14='?', @p15='?', @p16='?', @p17='?' (DbType = Boolean), @p18='?', @p19='?', @p20='?', @p21='?' (DbType = Boolean), @p22='?', @p23='?' (DbType = Int16)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AspNetUserRoles" ("RoleId", "UserId")
+VALUES (@p0, @p1);
+UPDATE "AspNetUsers" SET "AccessFailedCount" = @p2, "AccessStatus" = @p3, "ConcurrencyStamp" = @p4, "CurrentStatus" = @p5, "Email" = @p6, "EmailConfirmed" = @p7, "FirstName" = @p8, "Gender" = @p9, "LastName" = @p10, "LockoutEnabled" = @p11, "LockoutEnd" = @p12, "NormalizedEmail" = @p13, "NormalizedUserName" = @p14, "PasswordHash" = @p15, "PhoneNumber" = @p16, "PhoneNumberConfirmed" = @p17, "SecurityStamp" = @p18, "State" = @p19, "Town" = @p20, "TwoFactorEnabled" = @p21, "UserName" = @p22, "UserType" = @p23
+WHERE "Id" = @p24 AND "ConcurrencyStamp" = @p25;
+2025-08-18 13:34:16.650 +01:00 [INF] Executed DbCommand (72ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."AccessStatus", a."ConcurrencyStamp", a."CurrentStatus", a."Email", a."EmailConfirmed", a."FirstName", a."Gender", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."State", a."Town", a."TwoFactorEnabled", a."UserName", a."UserType"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2025-08-18 13:34:17.112 +01:00 [INF] Executed DbCommand (13ms) [Parameters=[@__userId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a0."Name"
+FROM "AspNetUserRoles" AS a
+INNER JOIN "AspNetRoles" AS a0 ON a."RoleId" = a0."Id"
+WHERE a."UserId" = @__userId_0
+2025-08-18 13:34:21.420 +01:00 [INF] Executed action method iRechargeTestProject.API.Controllers.AccountController.CustomerSelfRegisteration (iRechargeTestProject.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 22152.2359ms.
+2025-08-18 13:34:21.431 +01:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`2[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Object, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-08-18 13:34:21.465 +01:00 [INF] Executed action iRechargeTestProject.API.Controllers.AccountController.CustomerSelfRegisteration (iRechargeTestProject.API) in 22383.4189ms
+2025-08-18 13:34:21.465 +01:00 [INF] Executed endpoint 'iRechargeTestProject.API.Controllers.AccountController.CustomerSelfRegisteration (iRechargeTestProject.API)'
+2025-08-18 13:34:21.466 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7045/api/Account/register-customer-user - 200 null application/json; charset=utf-8 22405.0698ms
+2025-08-18 13:50:16.755 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7045/api/Order/create-order - application/json 891
+2025-08-18 13:50:16.757 +01:00 [INF] CORS policy execution failed.
+2025-08-18 13:50:16.757 +01:00 [INF] Request origin https://localhost:7045 does not have permission to access the resource.
+2025-08-18 13:50:16.792 +01:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Customer)
+2025-08-18 13:50:16.806 +01:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-08-18 13:50:16.806 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7045/api/Order/create-order - 401 0 null 51.5257ms
+2025-08-18 13:53:38.431 +01:00 [INF] Executed DbCommand (266ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-08-18 13:53:41.987 +01:00 [INF] Executed DbCommand (154ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+);
+2025-08-18 13:53:42.023 +01:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-08-18 13:53:42.222 +01:00 [INF] Executed DbCommand (197ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE
+2025-08-18 13:53:42.306 +01:00 [INF] Executed DbCommand (83ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-08-18 13:53:42.323 +01:00 [INF] No migrations were applied. The database is already up to date.
+2025-08-18 13:53:44.011 +01:00 [INF] Executed DbCommand (35ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetRoles" AS a)
+2025-08-18 13:53:44.173 +01:00 [INF] Executed DbCommand (95ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetUsers" AS a)
+2025-08-18 13:53:44.490 +01:00 [INF] User profile is available. Using 'C:\Users\Naits\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-08-18 13:53:47.391 +01:00 [INF] Now listening on: https://localhost:51567
+2025-08-18 13:53:47.391 +01:00 [INF] Now listening on: http://localhost:51568
+2025-08-18 13:53:48.049 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-08-18 13:53:48.050 +01:00 [INF] Hosting environment: Development
+2025-08-18 13:53:48.051 +01:00 [INF] Content root path: C:\Projects\iRechargeTestProject2nd\iRechargeTestProject.API
+2025-08-18 13:53:49.921 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 13:53:49.978 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 92.8571ms
+2025-08-18 13:53:51.078 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 13:53:51.458 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 380.0639ms
+2025-08-18 13:53:52.796 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 13:53:52.802 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 6.5153ms
+2025-08-18 13:53:55.616 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 13:53:55.650 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 33.6022ms
+2025-08-18 14:17:05.539 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/index.html - null null
+2025-08-18 14:17:05.870 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/index.html - 200 null text/html;charset=utf-8 330.9638ms
+2025-08-18 14:17:06.266 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 14:17:06.268 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 2.1039ms
+2025-08-18 14:17:06.287 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/index.js - null null
+2025-08-18 14:17:06.288 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/index.js - 200 null application/javascript;charset=utf-8 1.8101ms
+2025-08-18 14:17:06.665 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 14:17:06.715 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 50.7835ms
+2025-08-18 14:26:22.932 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7045/api/Order/create-order - application/json 901
+2025-08-18 14:26:22.947 +01:00 [INF] CORS policy execution failed.
+2025-08-18 14:26:22.950 +01:00 [INF] Request origin https://localhost:7045 does not have permission to access the resource.
+2025-08-18 14:26:22.963 +01:00 [INF] Executing endpoint 'iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API)'
+2025-08-18 14:26:23.026 +01:00 [INF] Route matched with {action = "CreateOrder", controller = "Order"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateOrderAsync(iRechargeTestProject.Domain.Entities.OrderModel) on controller iRechargeTestProject.API.Controllers.OrderController (iRechargeTestProject.API).
+2025-08-18 14:26:23.042 +01:00 [INF] Executed action iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API) in 9.7026ms
+2025-08-18 14:26:23.044 +01:00 [INF] Executed endpoint 'iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API)'
+2025-08-18 14:26:23.049 +01:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'iRechargeTestProject.Application.IService.IOrderService' while attempting to activate 'iRechargeTestProject.API.Controllers.OrderController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method34(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2025-08-18 14:26:23.112 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7045/api/Order/create-order - 500 null application/json 180.6521ms
+2025-08-18 15:44:18.901 +01:00 [INF] Executed DbCommand (105ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-08-18 15:44:20.802 +01:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+);
+2025-08-18 15:44:20.854 +01:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-08-18 15:44:20.869 +01:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE
+2025-08-18 15:44:20.883 +01:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-08-18 15:44:20.900 +01:00 [INF] No migrations were applied. The database is already up to date.
+2025-08-18 15:44:22.136 +01:00 [INF] Executed DbCommand (25ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetRoles" AS a)
+2025-08-18 15:44:22.230 +01:00 [INF] Executed DbCommand (33ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetUsers" AS a)
+2025-08-18 15:44:23.051 +01:00 [INF] User profile is available. Using 'C:\Users\Naits\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-08-18 15:44:26.622 +01:00 [INF] Now listening on: https://localhost:53716
+2025-08-18 15:44:26.624 +01:00 [INF] Now listening on: http://localhost:53717
+2025-08-18 15:44:27.122 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-08-18 15:44:27.123 +01:00 [INF] Hosting environment: Development
+2025-08-18 15:44:27.123 +01:00 [INF] Content root path: C:\Projects\iRechargeTestProject2nd\iRechargeTestProject.API
+2025-08-18 15:44:27.677 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/index.html - null null
+2025-08-18 15:44:27.677 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 15:44:27.772 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 138.8313ms
+2025-08-18 15:44:28.454 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/index.html - null null
+2025-08-18 15:44:28.453 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/index.html - 200 null text/html;charset=utf-8 822.7921ms
+2025-08-18 15:44:28.462 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/index.html - 200 null text/html;charset=utf-8 8.0655ms
+2025-08-18 15:44:28.877 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5254/swagger/index.html - null null
+2025-08-18 15:44:28.918 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5254/swagger/index.html - 200 null text/html;charset=utf-8 40.9566ms
+2025-08-18 15:44:29.350 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5254/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 15:44:29.351 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5254/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 1.3824ms
+2025-08-18 15:44:29.729 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5254/swagger/index.js - null null
+2025-08-18 15:44:29.732 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5254/swagger/index.js - 200 null application/javascript;charset=utf-8 2.807ms
+2025-08-18 15:44:31.101 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5254/swagger/v1/swagger.json - null null
+2025-08-18 15:44:31.200 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5254/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 98.743ms
+2025-08-18 15:44:38.689 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/index.js - null null
+2025-08-18 15:44:38.692 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/index.js - 200 null application/javascript;charset=utf-8 2.3266ms
+2025-08-18 15:44:38.911 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/index.js - null null
+2025-08-18 15:44:38.912 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/index.js - 200 null application/javascript;charset=utf-8 1.2153ms
+2025-08-18 15:44:38.987 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 15:44:38.989 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 1.8719ms
+2025-08-18 15:44:39.329 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 15:44:39.330 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 1.3204ms
+2025-08-18 15:44:39.395 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 15:44:39.430 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 34.9088ms
+2025-08-18 15:44:40.994 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 15:44:41.018 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 24.0404ms
+2025-08-18 15:44:51.075 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 15:44:51.096 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 21.2442ms
+2025-08-18 15:50:53.102 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7045/api/Order/create-order - application/json 903
+2025-08-18 15:50:53.115 +01:00 [INF] CORS policy execution failed.
+2025-08-18 15:50:53.116 +01:00 [INF] Request origin https://localhost:7045 does not have permission to access the resource.
+2025-08-18 15:50:53.129 +01:00 [INF] Executing endpoint 'iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API)'
+2025-08-18 15:50:53.210 +01:00 [INF] Route matched with {action = "CreateOrder", controller = "Order"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateOrderAsync(iRechargeTestProject.Domain.Entities.OrderModel) on controller iRechargeTestProject.API.Controllers.OrderController (iRechargeTestProject.API).
+2025-08-18 15:50:53.236 +01:00 [INF] Found AWS options in IConfiguration
+2025-08-18 15:50:53.433 +01:00 [INF] Found credentials using the AWS SDK's default credential search
+2025-08-18 15:50:53.823 +01:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-08-18 15:50:53.890 +01:00 [INF] Executed action iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API) in 668.5919ms
+2025-08-18 15:50:53.890 +01:00 [INF] Executed endpoint 'iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API)'
+2025-08-18 15:50:53.909 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7045/api/Order/create-order - 400 null application/problem+json; charset=utf-8 806.5147ms
+2025-08-18 15:54:17.835 +01:00 [INF] Executed DbCommand (122ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-08-18 15:54:20.389 +01:00 [INF] Executed DbCommand (261ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+);
+2025-08-18 15:54:20.424 +01:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-08-18 15:54:20.540 +01:00 [INF] Executed DbCommand (114ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE
+2025-08-18 15:54:20.856 +01:00 [INF] Executed DbCommand (315ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-08-18 15:54:20.871 +01:00 [INF] No migrations were applied. The database is already up to date.
+2025-08-18 15:54:24.860 +01:00 [INF] Executed DbCommand (84ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetRoles" AS a)
+2025-08-18 15:54:25.062 +01:00 [INF] Executed DbCommand (146ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetUsers" AS a)
+2025-08-18 15:54:25.486 +01:00 [INF] User profile is available. Using 'C:\Users\Naits\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-08-18 15:54:27.469 +01:00 [INF] Now listening on: https://localhost:54785
+2025-08-18 15:54:27.469 +01:00 [INF] Now listening on: http://localhost:54786
+2025-08-18 15:54:28.011 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-08-18 15:54:28.012 +01:00 [INF] Hosting environment: Development
+2025-08-18 15:54:28.012 +01:00 [INF] Content root path: C:\Projects\iRechargeTestProject2nd\iRechargeTestProject.API
+2025-08-18 15:54:35.635 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 15:54:35.709 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 119.8273ms
+2025-08-18 15:54:39.051 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 15:54:39.056 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 3.948ms
+2025-08-18 15:54:40.435 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 15:54:40.851 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 416.3561ms
+2025-08-18 15:54:40.898 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 15:54:40.922 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 24.4324ms
+2025-08-18 15:54:54.281 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 15:54:54.283 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 2.0421ms
+2025-08-18 15:54:54.962 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 15:54:54.984 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 22.9263ms
+2025-08-18 15:54:59.446 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 15:54:59.448 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 1.2284ms
+2025-08-18 15:55:00.604 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 15:55:00.620 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 15.4201ms
+2025-08-18 16:16:30.637 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/index.html - null null
+2025-08-18 16:16:31.017 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/index.html - 200 null text/html;charset=utf-8 380.3075ms
+2025-08-18 16:16:31.388 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 16:16:31.390 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 2.2497ms
+2025-08-18 16:16:31.446 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/index.js - null null
+2025-08-18 16:16:31.449 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/index.js - 200 null application/javascript;charset=utf-8 3.5911ms
+2025-08-18 16:16:31.865 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 16:16:31.884 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 18.8352ms
+2025-08-18 16:29:30.438 +01:00 [INF] Executed DbCommand (130ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-08-18 16:29:32.812 +01:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+);
+2025-08-18 16:29:32.841 +01:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-08-18 16:29:32.856 +01:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE
+2025-08-18 16:29:32.874 +01:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-08-18 16:29:32.888 +01:00 [INF] No migrations were applied. The database is already up to date.
+2025-08-18 16:29:33.799 +01:00 [INF] Executed DbCommand (30ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetRoles" AS a)
+2025-08-18 16:29:33.945 +01:00 [INF] Executed DbCommand (99ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetUsers" AS a)
+2025-08-18 16:29:34.083 +01:00 [INF] User profile is available. Using 'C:\Users\Naits\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-08-18 16:29:36.067 +01:00 [INF] Now listening on: https://localhost:65067
+2025-08-18 16:29:36.067 +01:00 [INF] Now listening on: http://localhost:65068
+2025-08-18 16:29:36.447 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-08-18 16:29:36.448 +01:00 [INF] Hosting environment: Development
+2025-08-18 16:29:36.448 +01:00 [INF] Content root path: C:\Projects\iRechargeTestProject2nd\iRechargeTestProject.API
+2025-08-18 16:29:47.885 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/index.html - null null
+2025-08-18 16:29:48.602 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/index.html - 200 null text/html;charset=utf-8 767.7782ms
+2025-08-18 16:29:49.102 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 16:29:49.173 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 70.7969ms
+2025-08-18 16:29:49.201 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/index.js - null null
+2025-08-18 16:29:49.236 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/index.js - 200 null application/javascript;charset=utf-8 34.603ms
+2025-08-18 16:29:49.619 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 16:29:49.697 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 78.3138ms
+2025-08-18 16:30:39.750 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7045/api/Order/create-order - application/json 147
+2025-08-18 16:30:39.762 +01:00 [INF] CORS policy execution failed.
+2025-08-18 16:30:39.762 +01:00 [INF] Request origin https://localhost:7045 does not have permission to access the resource.
+2025-08-18 16:30:39.778 +01:00 [INF] Executing endpoint 'iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API)'
+2025-08-18 16:30:39.879 +01:00 [INF] Route matched with {action = "CreateOrder", controller = "Order"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateOrderAsync(iRechargeTestProject.Application.DTOs.OrderModelDto) on controller iRechargeTestProject.API.Controllers.OrderController (iRechargeTestProject.API).
+2025-08-18 16:30:39.912 +01:00 [INF] Found AWS options in IConfiguration
+2025-08-18 16:30:40.151 +01:00 [INF] Found credentials using the AWS SDK's default credential search
+2025-08-18 16:30:40.594 +01:00 [INF] Executing action method iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API) - Validation state: "Valid"
+2025-08-18 16:31:14.500 +01:00 [INF] Executed DbCommand (56ms) [Parameters=[@p0='?', @p1='?' (DbType = DateTime), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Orders" ("CustomerId", "OrderDate", "ProductId", "Quantity")
+VALUES (@p0, @p1, @p2, @p3)
+RETURNING "Id";
+2025-08-18 16:31:52.217 +01:00 [INF] Executed action method iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 71511.7121ms.
+2025-08-18 16:31:52.269 +01:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[iRechargeTestProject.Application.DTOs.OrderModelDto, iRechargeTestProject.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-18 16:31:52.366 +01:00 [INF] Executed action iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API) in 72466.6781ms
+2025-08-18 16:31:52.369 +01:00 [INF] Executed endpoint 'iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API)'
+2025-08-18 16:31:52.404 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7045/api/Order/create-order - 200 null application/json; charset=utf-8 72654.1234ms
+2025-08-18 16:34:59.780 +01:00 [INF] Executed DbCommand (110ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-08-18 16:35:01.539 +01:00 [INF] Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+);
+2025-08-18 16:35:01.588 +01:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-08-18 16:35:01.623 +01:00 [INF] Executed DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE
+2025-08-18 16:35:01.639 +01:00 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-08-18 16:35:01.656 +01:00 [INF] No migrations were applied. The database is already up to date.
+2025-08-18 16:35:03.346 +01:00 [INF] Executed DbCommand (217ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetRoles" AS a)
+2025-08-18 16:35:03.450 +01:00 [INF] Executed DbCommand (49ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetUsers" AS a)
+2025-08-18 16:35:03.743 +01:00 [INF] User profile is available. Using 'C:\Users\Naits\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-08-18 16:35:06.410 +01:00 [INF] Now listening on: https://localhost:65491
+2025-08-18 16:35:06.410 +01:00 [INF] Now listening on: http://localhost:65492
+2025-08-18 16:35:06.946 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-08-18 16:35:06.947 +01:00 [INF] Hosting environment: Development
+2025-08-18 16:35:06.947 +01:00 [INF] Content root path: C:\Projects\iRechargeTestProject2nd\iRechargeTestProject.API
+2025-08-18 16:35:11.821 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/index.html - null null
+2025-08-18 16:35:11.820 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/index.html - null null
+2025-08-18 16:35:12.626 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/index.html - 200 null text/html;charset=utf-8 865.1409ms
+2025-08-18 16:35:12.629 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/index.html - 200 null text/html;charset=utf-8 871.2677ms
+2025-08-18 16:35:13.060 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 16:35:13.160 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 100.7896ms
+2025-08-18 16:35:13.295 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/index.js - null null
+2025-08-18 16:35:13.325 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/index.js - 200 null application/javascript;charset=utf-8 30.6345ms
+2025-08-18 16:35:13.703 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 16:35:13.930 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 227.1192ms
+2025-08-18 16:35:27.025 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 16:35:27.027 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 2.3471ms
+2025-08-18 16:35:29.668 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 16:35:29.698 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 29.6607ms
+2025-08-18 16:35:38.105 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 16:35:38.107 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 2.0491ms
+2025-08-18 16:35:42.316 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 16:35:42.334 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 17.2954ms
+2025-08-18 16:35:43.502 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 16:35:43.503 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 1.8353ms
+2025-08-18 16:35:43.974 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 16:35:43.990 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 16.3967ms
+2025-08-18 16:35:52.071 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7045/api/Order/create-order - application/json 147
+2025-08-18 16:35:52.093 +01:00 [INF] CORS policy execution failed.
+2025-08-18 16:35:52.095 +01:00 [INF] Request origin https://localhost:7045 does not have permission to access the resource.
+2025-08-18 16:35:52.113 +01:00 [INF] Executing endpoint 'iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API)'
+2025-08-18 16:35:52.250 +01:00 [INF] Route matched with {action = "CreateOrder", controller = "Order"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateOrderAsync(iRechargeTestProject.Application.DTOs.OrderModelDto) on controller iRechargeTestProject.API.Controllers.OrderController (iRechargeTestProject.API).
+2025-08-18 16:35:52.331 +01:00 [INF] Found AWS options in IConfiguration
+2025-08-18 16:35:52.730 +01:00 [INF] Found credentials using the AWS SDK's default credential search
+2025-08-18 16:35:53.570 +01:00 [INF] Executing action method iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API) - Validation state: "Valid"
+2025-08-18 16:36:04.706 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 16:36:04.707 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 1.0161ms
+2025-08-18 16:36:09.200 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 16:36:09.224 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 24.3181ms
+2025-08-18 16:36:09.933 +01:00 [INF] Executed DbCommand (225ms) [Parameters=[@p0='?', @p1='?' (DbType = DateTime), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Orders" ("CustomerId", "OrderDate", "ProductId", "Quantity")
+VALUES (@p0, @p1, @p2, @p3)
+RETURNING "Id";
+2025-08-18 16:37:48.214 +01:00 [ERR] An error occurred while creating an order.
+System.Exception: An error occurred while creating the order.
+ ---> System.Net.Http.HttpRequestException: No such host is known. (sqs.af-south-1.amazonaws.com:443)
+ ---> System.Net.Sockets.SocketException (11001): No such host is known.
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.InjectNewHttp11ConnectionAsync(QueueItem queueItem)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionWaiter`1.WaitForConnectionWithTelemetryAsync(HttpRequestMessage request, HttpConnectionPool pool, Boolean async, CancellationToken requestCancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.Metrics.MetricsHandler.SendAsyncWithMetrics(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.DiagnosticsHandler.SendAsyncCore(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+   at Amazon.Runtime.HttpWebRequestMessage.GetResponseAsync(CancellationToken cancellationToken)
+   at Amazon.Runtime.Internal.HttpHandler`1.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.Unmarshaller.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.SQS.Internal.ValidationResponseHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.ErrorHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.ErrorHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.Signer.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.EndpointDiscoveryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.EndpointDiscoveryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.BaseAuthResolverHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.ErrorCallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.MetricsHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at iRechargeTestProject.Application.Service.SqsService.SendMessageAsync(String queueUrl, String messageBody) in C:\Projects\iRechargeTestProject2nd\iRechargeTestProject.Application\Service\SqsService.cs:line 25
+   at iRechargeTestProject.Application.Service.OrderService.CreateOrderAsync(OrderModelDto order) in C:\Projects\iRechargeTestProject2nd\iRechargeTestProject.Application\Service\OrderService.cs:line 51
+   --- End of inner exception stack trace ---
+   at iRechargeTestProject.Application.Service.OrderService.CreateOrderAsync(OrderModelDto order) in C:\Projects\iRechargeTestProject2nd\iRechargeTestProject.Application\Service\OrderService.cs:line 58
+   at iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync(OrderModelDto order) in C:\Projects\iRechargeTestProject2nd\iRechargeTestProject.API\Controllers\OrderController.cs:line 35
+2025-08-18 16:37:48.308 +01:00 [INF] Executed action method iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 114727.5883ms.
+2025-08-18 16:37:48.339 +01:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType0`2[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-08-18 16:37:48.373 +01:00 [INF] Executed action iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API) in 116093.8601ms
+2025-08-18 16:37:48.377 +01:00 [INF] Executed endpoint 'iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API)'
+2025-08-18 16:37:48.413 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7045/api/Order/create-order - 500 null application/json; charset=utf-8 116342.4708ms
+2025-08-18 16:38:04.260 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7045/api/Order/create-order - application/json 147
+2025-08-18 16:38:04.268 +01:00 [INF] CORS policy execution failed.
+2025-08-18 16:38:04.268 +01:00 [INF] Request origin https://localhost:7045 does not have permission to access the resource.
+2025-08-18 16:38:04.268 +01:00 [INF] Executing endpoint 'iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API)'
+2025-08-18 16:38:04.269 +01:00 [INF] Route matched with {action = "CreateOrder", controller = "Order"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateOrderAsync(iRechargeTestProject.Application.DTOs.OrderModelDto) on controller iRechargeTestProject.API.Controllers.OrderController (iRechargeTestProject.API).
+2025-08-18 16:38:04.291 +01:00 [INF] Executing action method iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API) - Validation state: "Valid"
+2025-08-18 16:38:15.217 +01:00 [INF] Executed DbCommand (97ms) [Parameters=[@p0='?', @p1='?' (DbType = DateTime), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Orders" ("CustomerId", "OrderDate", "ProductId", "Quantity")
+VALUES (@p0, @p1, @p2, @p3)
+RETURNING "Id";
+2025-08-18 16:59:38.381 +01:00 [INF] Executed DbCommand (299ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-08-18 16:59:42.200 +01:00 [INF] Executed DbCommand (43ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+);
+2025-08-18 16:59:42.254 +01:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-08-18 16:59:42.306 +01:00 [INF] Executed DbCommand (50ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE
+2025-08-18 16:59:42.357 +01:00 [INF] Executed DbCommand (50ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-08-18 16:59:42.389 +01:00 [INF] No migrations were applied. The database is already up to date.
+2025-08-18 16:59:43.813 +01:00 [INF] Executed DbCommand (42ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetRoles" AS a)
+2025-08-18 16:59:43.923 +01:00 [INF] Executed DbCommand (45ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetUsers" AS a)
+2025-08-18 16:59:44.242 +01:00 [INF] User profile is available. Using 'C:\Users\Naits\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-08-18 16:59:47.071 +01:00 [INF] Now listening on: https://localhost:50801
+2025-08-18 16:59:47.071 +01:00 [INF] Now listening on: http://localhost:50802
+2025-08-18 16:59:48.274 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-08-18 16:59:48.274 +01:00 [INF] Hosting environment: Development
+2025-08-18 16:59:48.274 +01:00 [INF] Content root path: C:\Projects\iRechargeTestProject2nd\iRechargeTestProject.API
+2025-08-18 16:59:48.405 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 16:59:48.442 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/index.html - null null
+2025-08-18 16:59:48.669 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 314.3514ms
+2025-08-18 16:59:50.180 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/index.html - 200 null text/html;charset=utf-8 1827.6005ms
+2025-08-18 16:59:53.301 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/index.js - null null
+2025-08-18 16:59:53.302 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 16:59:53.304 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 2.1736ms
+2025-08-18 16:59:53.314 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/index.js - 200 null application/javascript;charset=utf-8 23.5598ms
+2025-08-18 16:59:54.335 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 16:59:54.335 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 0.9671ms
+2025-08-18 16:59:55.286 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 16:59:55.347 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 61.8364ms
+2025-08-18 16:59:55.455 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 16:59:55.479 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 23.9151ms
+2025-08-18 16:59:58.396 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5254/swagger/index.html - null null
+2025-08-18 16:59:58.549 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5254/swagger/index.html - 200 null text/html;charset=utf-8 153.7033ms
+2025-08-18 17:00:02.401 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 17:00:02.430 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 28.0763ms
+2025-08-18 17:00:19.146 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5254/swagger/index.js - null null
+2025-08-18 17:00:19.148 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5254/swagger/index.js - 200 null application/javascript;charset=utf-8 2.7019ms
+2025-08-18 17:00:19.153 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5254/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 17:00:19.162 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5254/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 11.1346ms
+2025-08-18 17:00:20.380 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5254/swagger/v1/swagger.json - null null
+2025-08-18 17:00:20.396 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5254/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 15.6856ms
+2025-08-18 17:00:24.967 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 17:00:24.971 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 4.1247ms
+2025-08-18 17:00:26.579 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 17:00:26.593 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 14.8337ms
+2025-08-18 17:00:34.610 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 17:00:34.611 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 0.9627ms
+2025-08-18 17:00:35.018 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 17:00:35.026 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 7.9498ms
+2025-08-18 17:00:35.239 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7045/api/Order/create-order - application/json 147
+2025-08-18 17:00:35.256 +01:00 [INF] CORS policy execution failed.
+2025-08-18 17:00:35.257 +01:00 [INF] Request origin https://localhost:7045 does not have permission to access the resource.
+2025-08-18 17:00:35.272 +01:00 [INF] Executing endpoint 'iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API)'
+2025-08-18 17:00:35.364 +01:00 [INF] Route matched with {action = "CreateOrder", controller = "Order"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateOrderAsync(iRechargeTestProject.Application.DTOs.OrderModelDto) on controller iRechargeTestProject.API.Controllers.OrderController (iRechargeTestProject.API).
+2025-08-18 17:00:35.609 +01:00 [INF] Found credentials using the AWS SDK's default credential search
+2025-08-18 17:00:36.407 +01:00 [INF] Executing action method iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API) - Validation state: "Valid"
+2025-08-18 17:00:49.875 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 17:00:49.876 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 1.1618ms
+2025-08-18 17:00:49.996 +01:00 [INF] Executed DbCommand (61ms) [Parameters=[@p0='?', @p1='?' (DbType = DateTime), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Orders" ("CustomerId", "OrderDate", "ProductId", "Quantity")
+VALUES (@p0, @p1, @p2, @p3)
+RETURNING "Id";
+2025-08-18 17:01:01.129 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 17:01:03.352 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 2222.4804ms
+2025-08-18 17:01:24.879 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 17:01:28.777 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 3897.9005ms
+2025-08-18 17:01:29.112 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 17:01:29.119 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 7.2511ms
+2025-08-18 17:02:12.647 +01:00 [INF] Executed action method iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 96187.7736ms.
+2025-08-18 17:02:12.669 +01:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[iRechargeTestProject.Application.DTOs.OrderModelDto, iRechargeTestProject.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-18 17:02:12.698 +01:00 [INF] Executed action iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API) in 97320.4525ms
+2025-08-18 17:02:12.700 +01:00 [INF] Executed endpoint 'iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API)'
+2025-08-18 17:02:12.717 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7045/api/Order/create-order - 200 null application/json; charset=utf-8 97478.4774ms
+2025-08-18 17:07:42.410 +01:00 [INF] Executed DbCommand (129ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-08-18 17:07:44.276 +01:00 [INF] Executed DbCommand (30ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+);
+2025-08-18 17:07:44.338 +01:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-08-18 17:07:44.361 +01:00 [INF] Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE
+2025-08-18 17:07:44.375 +01:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-08-18 17:07:44.392 +01:00 [INF] No migrations were applied. The database is already up to date.
+2025-08-18 17:07:45.764 +01:00 [INF] Executed DbCommand (37ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetRoles" AS a)
+2025-08-18 17:07:45.846 +01:00 [INF] Executed DbCommand (33ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetUsers" AS a)
+2025-08-18 17:07:46.078 +01:00 [INF] User profile is available. Using 'C:\Users\Naits\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-08-18 17:07:47.995 +01:00 [INF] Now listening on: https://localhost:51825
+2025-08-18 17:07:47.996 +01:00 [INF] Now listening on: http://localhost:51826
+2025-08-18 17:07:48.418 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-08-18 17:07:48.419 +01:00 [INF] Hosting environment: Development
+2025-08-18 17:07:48.419 +01:00 [INF] Content root path: C:\Projects\iRechargeTestProject2nd\iRechargeTestProject.API
+2025-08-18 17:07:49.391 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 17:07:49.477 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 150.7912ms
+2025-08-18 17:07:49.529 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 17:07:49.539 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 10.2628ms
+2025-08-18 17:07:50.226 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5254/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 17:07:50.254 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5254/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 28.2109ms
+2025-08-18 17:07:50.446 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 17:07:51.006 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 17:07:51.007 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 561.1332ms
+2025-08-18 17:07:51.037 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 30.4492ms
+2025-08-18 17:07:53.793 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5254/swagger/v1/swagger.json - null null
+2025-08-18 17:07:53.839 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5254/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 46.5731ms
+2025-08-18 17:08:02.672 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 17:08:02.674 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 1.4156ms
+2025-08-18 17:08:03.958 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 17:08:03.986 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 28.5681ms
+2025-08-18 17:08:13.965 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 17:08:13.966 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 1.3549ms
+2025-08-18 17:08:14.775 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 17:08:14.794 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 19.8863ms
+2025-08-18 17:08:20.619 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 17:08:20.620 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 1.0412ms
+2025-08-18 17:08:21.553 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 17:08:21.566 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 12.5431ms
+2025-08-18 17:08:21.781 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/index.html - null null
+2025-08-18 17:08:22.233 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/index.html - 200 null text/html;charset=utf-8 451.5361ms
+2025-08-18 17:08:22.515 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 17:08:22.516 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 0.949ms
+2025-08-18 17:08:22.521 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/index.js - null null
+2025-08-18 17:08:22.532 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/index.js - 200 null application/javascript;charset=utf-8 10.8232ms
+2025-08-18 17:08:22.802 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 17:08:22.804 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 1.3675ms
+2025-08-18 17:08:22.933 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 17:08:22.954 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 21.6116ms
+2025-08-18 17:08:25.255 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 17:08:25.268 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 13.0443ms
+2025-08-18 17:08:33.468 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 17:08:33.476 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 7.6614ms
+2025-08-18 17:08:35.438 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 17:08:35.445 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 7.3252ms
+2025-08-18 17:15:10.306 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7045/api/Order/create-order - application/json 117
+2025-08-18 17:15:10.321 +01:00 [INF] CORS policy execution failed.
+2025-08-18 17:15:10.321 +01:00 [INF] Request origin https://localhost:7045 does not have permission to access the resource.
+2025-08-18 17:15:10.336 +01:00 [INF] Executing endpoint 'iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API)'
+2025-08-18 17:15:10.421 +01:00 [INF] Route matched with {action = "CreateOrder", controller = "Order"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateOrderAsync(iRechargeTestProject.Application.DTOs.OrderModelDto) on controller iRechargeTestProject.API.Controllers.OrderController (iRechargeTestProject.API).
+2025-08-18 17:15:10.635 +01:00 [INF] Found credentials using the AWS SDK's default credential search
+2025-08-18 17:15:10.905 +01:00 [INF] Executing action method iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API) - Validation state: "Valid"
+2025-08-18 17:15:11.574 +01:00 [ERR] Failed executing DbCommand (83ms) [Parameters=[@p0='?', @p1='?' (DbType = DateTime), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Orders" ("CustomerId", "OrderDate", "ProductId", "Quantity")
+VALUES (@p0, @p1, @p2, @p3)
+RETURNING "Id";
+2025-08-18 17:15:11.616 +01:00 [ERR] An exception occurred in the database while saving changes for context type 'iRechargeTestProject.Infrastructure.Data.AppDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23503: insert or update on table "Orders" violates foreign key constraint "FK_Orders_AspNetUsers_CustomerId"
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ERROR
+    SqlState: 23503
+    MessageText: insert or update on table "Orders" violates foreign key constraint "FK_Orders_AspNetUsers_CustomerId"
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: public
+    TableName: Orders
+    ConstraintName: FK_Orders_AspNetUsers_CustomerId
+    File: ri_triggers.c
+    Line: 2599
+    Routine: ri_ReportViolation
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23503: insert or update on table "Orders" violates foreign key constraint "FK_Orders_AspNetUsers_CustomerId"
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ERROR
+    SqlState: 23503
+    MessageText: insert or update on table "Orders" violates foreign key constraint "FK_Orders_AspNetUsers_CustomerId"
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: public
+    TableName: Orders
+    ConstraintName: FK_Orders_AspNetUsers_CustomerId
+    File: ri_triggers.c
+    Line: 2599
+    Routine: ri_ReportViolation
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2025-08-18 17:16:01.915 +01:00 [ERR] An error occurred while creating an order.
+System.Exception: An error occurred while creating the order.
+ ---> Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23503: insert or update on table "Orders" violates foreign key constraint "FK_Orders_AspNetUsers_CustomerId"
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ERROR
+    SqlState: 23503
+    MessageText: insert or update on table "Orders" violates foreign key constraint "FK_Orders_AspNetUsers_CustomerId"
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: public
+    TableName: Orders
+    ConstraintName: FK_Orders_AspNetUsers_CustomerId
+    File: ri_triggers.c
+    Line: 2599
+    Routine: ri_ReportViolation
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at iRechargeTestProject.Infrastructure.Repository.GenericRepository`1.SaveAsync() in C:\Projects\iRechargeTestProject2nd\iRechargeTestProject.Infrastructure\Repository\GenericRepository.cs:line 109
+   at iRechargeTestProject.Application.Service.OrderService.CreateOrderAsync(OrderModelDto order) in C:\Projects\iRechargeTestProject2nd\iRechargeTestProject.Application\Service\OrderService.cs:line 42
+   --- End of inner exception stack trace ---
+   at iRechargeTestProject.Application.Service.OrderService.CreateOrderAsync(OrderModelDto order) in C:\Projects\iRechargeTestProject2nd\iRechargeTestProject.Application\Service\OrderService.cs:line 56
+   at iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync(OrderModelDto order) in C:\Projects\iRechargeTestProject2nd\iRechargeTestProject.API\Controllers\OrderController.cs:line 35
+2025-08-18 17:16:02.346 +01:00 [INF] Executed action method iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 51432.8046ms.
+2025-08-18 17:16:02.372 +01:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType0`2[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-08-18 17:16:02.427 +01:00 [INF] Executed action iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API) in 51968.7217ms
+2025-08-18 17:16:02.483 +01:00 [INF] Executed endpoint 'iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API)'
+2025-08-18 17:16:02.512 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7045/api/Order/create-order - 500 null application/json; charset=utf-8 52206.4125ms
+2025-08-18 17:16:43.022 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7045/api/Order/create-order - application/json 147
+2025-08-18 17:16:43.029 +01:00 [INF] CORS policy execution failed.
+2025-08-18 17:16:43.029 +01:00 [INF] Request origin https://localhost:7045 does not have permission to access the resource.
+2025-08-18 17:16:43.029 +01:00 [INF] Executing endpoint 'iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API)'
+2025-08-18 17:16:43.030 +01:00 [INF] Route matched with {action = "CreateOrder", controller = "Order"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateOrderAsync(iRechargeTestProject.Application.DTOs.OrderModelDto) on controller iRechargeTestProject.API.Controllers.OrderController (iRechargeTestProject.API).
+2025-08-18 17:16:43.040 +01:00 [INF] Executing action method iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API) - Validation state: "Valid"
+2025-08-18 17:16:43.069 +01:00 [INF] Executed DbCommand (18ms) [Parameters=[@p0='?', @p1='?' (DbType = DateTime), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Orders" ("CustomerId", "OrderDate", "ProductId", "Quantity")
+VALUES (@p0, @p1, @p2, @p3)
+RETURNING "Id";
+2025-08-18 17:17:28.310 +01:00 [INF] Executed action method iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 45269.446ms.
+2025-08-18 17:17:28.323 +01:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[iRechargeTestProject.Application.DTOs.OrderModelDto, iRechargeTestProject.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-18 17:17:28.359 +01:00 [INF] Executed action iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API) in 45327.4376ms
+2025-08-18 17:17:28.359 +01:00 [INF] Executed endpoint 'iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API)'
+2025-08-18 17:17:28.360 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7045/api/Order/create-order - 200 null application/json; charset=utf-8 45339.7393ms
+2025-08-18 17:33:37.235 +01:00 [INF] Executed DbCommand (119ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-08-18 17:33:39.037 +01:00 [INF] Executed DbCommand (37ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+);
+2025-08-18 17:33:39.081 +01:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-08-18 17:33:39.145 +01:00 [INF] Executed DbCommand (61ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE
+2025-08-18 17:33:39.188 +01:00 [INF] Executed DbCommand (42ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-08-18 17:33:39.213 +01:00 [INF] No migrations were applied. The database is already up to date.
+2025-08-18 17:33:40.330 +01:00 [INF] Executed DbCommand (32ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetRoles" AS a)
+2025-08-18 17:33:40.416 +01:00 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetUsers" AS a)
+2025-08-18 17:33:40.562 +01:00 [INF] User profile is available. Using 'C:\Users\Naits\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-08-18 17:33:45.473 +01:00 [INF] Now listening on: https://localhost:53288
+2025-08-18 17:33:45.473 +01:00 [INF] Now listening on: http://localhost:53289
+2025-08-18 17:33:46.666 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-08-18 17:33:46.667 +01:00 [INF] Hosting environment: Development
+2025-08-18 17:33:46.667 +01:00 [INF] Content root path: C:\Projects\iRechargeTestProject2nd\iRechargeTestProject.API
+2025-08-18 17:33:47.301 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 17:33:47.368 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 104.7026ms
+2025-08-18 17:33:50.143 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 17:33:50.908 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 765.5207ms
+2025-08-18 17:33:58.923 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 17:33:58.924 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 1.972ms
+2025-08-18 17:33:59.909 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 17:33:59.935 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 25.6643ms
+2025-08-18 17:34:10.096 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 17:34:10.097 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 1.6261ms
+2025-08-18 17:34:12.569 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 17:34:12.593 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 23.2765ms
+2025-08-18 17:34:17.112 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 17:34:17.113 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 0.9018ms
+2025-08-18 17:34:19.317 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 17:34:19.333 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 16.6653ms
+2025-08-18 17:34:19.578 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 17:34:19.579 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 1.0043ms
+2025-08-18 17:34:20.238 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 17:34:20.256 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 18.4918ms
+2025-08-18 17:34:26.188 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 17:34:26.190 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 1.7641ms
+2025-08-18 17:34:26.829 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 17:34:26.838 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 9.254ms
+2025-08-18 17:38:02.506 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/index.html - null null
+2025-08-18 17:38:02.806 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/index.html - 200 null text/html;charset=utf-8 300.4862ms
+2025-08-18 17:38:02.974 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 17:38:02.981 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 6.7125ms
+2025-08-18 17:38:02.983 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/index.js - null null
+2025-08-18 17:38:02.986 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/index.js - 200 null application/javascript;charset=utf-8 3.3063ms
+2025-08-18 17:38:03.304 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 17:38:03.317 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 12.7161ms
+2025-08-18 17:38:42.549 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7045/api/Order/create-order - application/json 147
+2025-08-18 17:38:42.615 +01:00 [INF] CORS policy execution failed.
+2025-08-18 17:38:42.617 +01:00 [INF] Request origin https://localhost:7045 does not have permission to access the resource.
+2025-08-18 17:38:42.625 +01:00 [INF] Executing endpoint 'iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API)'
+2025-08-18 17:38:42.677 +01:00 [INF] Route matched with {action = "CreateOrder", controller = "Order"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateOrderAsync(iRechargeTestProject.Application.DTOs.OrderModelDto) on controller iRechargeTestProject.API.Controllers.OrderController (iRechargeTestProject.API).
+2025-08-18 17:38:42.780 +01:00 [INF] Found credentials using the AWS SDK's default credential search
+2025-08-18 17:38:42.994 +01:00 [INF] Executing action method iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API) - Validation state: "Valid"
+2025-08-18 17:38:44.204 +01:00 [INF] Executed DbCommand (101ms) [Parameters=[@p0='?', @p1='?' (DbType = DateTime), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Orders" ("CustomerId", "OrderDate", "ProductId", "Quantity")
+VALUES (@p0, @p1, @p2, @p3)
+RETURNING "Id";
+2025-08-18 17:39:37.543 +01:00 [INF] Executed action method iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 54538.1907ms.
+2025-08-18 17:39:37.617 +01:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[iRechargeTestProject.Application.DTOs.OrderModelDto, iRechargeTestProject.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-18 17:39:37.672 +01:00 [INF] Executed action iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API) in 54984.5162ms
+2025-08-18 17:39:37.674 +01:00 [INF] Executed endpoint 'iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API)'
+2025-08-18 17:39:37.697 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7045/api/Order/create-order - 200 null application/json; charset=utf-8 55150.2135ms
+2025-08-18 18:20:53.861 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7045/api/Order/create-order - application/json 147
+2025-08-18 18:20:53.890 +01:00 [INF] CORS policy execution failed.
+2025-08-18 18:20:53.890 +01:00 [INF] Request origin https://localhost:7045 does not have permission to access the resource.
+2025-08-18 18:20:53.891 +01:00 [INF] Executing endpoint 'iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API)'
+2025-08-18 18:20:53.940 +01:00 [INF] Route matched with {action = "CreateOrder", controller = "Order"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateOrderAsync(iRechargeTestProject.Application.DTOs.OrderModelDto) on controller iRechargeTestProject.API.Controllers.OrderController (iRechargeTestProject.API).
+2025-08-18 18:20:53.966 +01:00 [INF] Executing action method iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API) - Validation state: "Valid"
+2025-08-18 18:20:54.217 +01:00 [INF] Executed DbCommand (82ms) [Parameters=[@p0='?', @p1='?' (DbType = DateTime), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Orders" ("CustomerId", "OrderDate", "ProductId", "Quantity")
+VALUES (@p0, @p1, @p2, @p3)
+RETURNING "Id";
+2025-08-18 18:21:36.199 +01:00 [INF] Executed action method iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 42230.0893ms.
+2025-08-18 18:21:36.202 +01:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[iRechargeTestProject.Application.DTOs.OrderModelDto, iRechargeTestProject.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-18 18:21:36.204 +01:00 [INF] Executed action iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API) in 42262.0978ms
+2025-08-18 18:21:36.204 +01:00 [INF] Executed endpoint 'iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API)'
+2025-08-18 18:21:36.205 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7045/api/Order/create-order - 200 null application/json; charset=utf-8 42344.98ms
+2025-08-18 18:27:25.223 +01:00 [INF] Executed DbCommand (151ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-08-18 18:27:28.525 +01:00 [INF] Executed DbCommand (189ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+);
+2025-08-18 18:27:28.568 +01:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-08-18 18:27:28.653 +01:00 [INF] Executed DbCommand (82ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE
+2025-08-18 18:27:28.825 +01:00 [INF] Executed DbCommand (172ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-08-18 18:27:28.839 +01:00 [INF] No migrations were applied. The database is already up to date.
+2025-08-18 18:27:31.599 +01:00 [INF] Executed DbCommand (333ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetRoles" AS a)
+2025-08-18 18:27:31.799 +01:00 [INF] Executed DbCommand (130ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetUsers" AS a)
+2025-08-18 18:27:32.287 +01:00 [INF] User profile is available. Using 'C:\Users\Naits\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-08-18 18:27:36.501 +01:00 [INF] Now listening on: https://localhost:56298
+2025-08-18 18:27:36.502 +01:00 [INF] Now listening on: http://localhost:56300
+2025-08-18 18:27:36.934 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-08-18 18:27:36.935 +01:00 [INF] Hosting environment: Development
+2025-08-18 18:27:36.935 +01:00 [INF] Content root path: C:\Projects\iRechargeTestProject2nd\iRechargeTestProject.API
+2025-08-18 18:27:47.600 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5254/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 18:27:47.684 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5254/_framework/aspnetcore-browser-refresh.js - 499 16533 application/javascript; charset=utf-8 151.7415ms
+2025-08-18 18:27:55.935 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 18:27:57.177 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 1242.2976ms
+2025-08-18 18:27:57.996 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/index.html - null null
+2025-08-18 18:27:58.798 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/index.html - 200 null text/html;charset=utf-8 802.0119ms
+2025-08-18 18:27:59.200 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 18:27:59.213 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 13.5758ms
+2025-08-18 18:27:59.381 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/index.js - null null
+2025-08-18 18:27:59.393 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/index.js - 200 null application/javascript;charset=utf-8 11.9654ms
+2025-08-18 18:27:59.700 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 18:27:59.765 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 65.4322ms
+2025-08-18 18:28:23.487 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 18:28:23.491 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 4.2797ms
+2025-08-18 18:28:23.636 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 18:28:23.637 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 0.972ms
+2025-08-18 18:28:39.625 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7045/api/Order/create-order - application/json 147
+2025-08-18 18:28:39.655 +01:00 [INF] CORS policy execution failed.
+2025-08-18 18:28:39.656 +01:00 [INF] Request origin https://localhost:7045 does not have permission to access the resource.
+2025-08-18 18:28:39.673 +01:00 [INF] Executing endpoint 'iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API)'
+2025-08-18 18:28:39.836 +01:00 [INF] Route matched with {action = "CreateOrder", controller = "Order"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateOrderAsync(iRechargeTestProject.Application.DTOs.OrderModelDto) on controller iRechargeTestProject.API.Controllers.OrderController (iRechargeTestProject.API).
+2025-08-18 18:28:40.176 +01:00 [INF] Found credentials using the AWS SDK's default credential search
+2025-08-18 18:28:40.702 +01:00 [INF] Executing action method iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API) - Validation state: "Valid"
+2025-08-18 18:28:41.970 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 18:28:41.992 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 21.897ms
+2025-08-18 18:28:42.204 +01:00 [INF] Executed DbCommand (247ms) [Parameters=[@p0='?', @p1='?' (DbType = DateTime), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Orders" ("CustomerId", "OrderDate", "ProductId", "Quantity")
+VALUES (@p0, @p1, @p2, @p3)
+RETURNING "Id";
+2025-08-18 18:28:48.337 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 18:28:48.452 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 114.5236ms
+2025-08-18 18:29:36.434 +01:00 [INF] Executed action method iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 55722.2686ms.
+2025-08-18 18:29:36.465 +01:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[iRechargeTestProject.Application.DTOs.OrderModelDto, iRechargeTestProject.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-18 18:29:36.513 +01:00 [INF] Executed action iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API) in 56655.6633ms
+2025-08-18 18:29:36.515 +01:00 [INF] Executed endpoint 'iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API)'
+2025-08-18 18:29:36.535 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7045/api/Order/create-order - 200 null application/json; charset=utf-8 56910.2039ms
+2025-08-18 21:28:39.970 +01:00 [INF] Executed DbCommand (112ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-08-18 21:28:41.630 +01:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+);
+2025-08-18 21:28:41.659 +01:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-08-18 21:28:41.670 +01:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE
+2025-08-18 21:28:41.677 +01:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-08-18 21:28:41.695 +01:00 [INF] No migrations were applied. The database is already up to date.
+2025-08-18 21:28:42.659 +01:00 [INF] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetRoles" AS a)
+2025-08-18 21:28:42.854 +01:00 [INF] Executed DbCommand (129ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetUsers" AS a)
+2025-08-18 21:28:42.986 +01:00 [INF] User profile is available. Using 'C:\Users\Naits\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-08-18 21:28:44.103 +01:00 [INF] Now listening on: https://localhost:63683
+2025-08-18 21:28:44.103 +01:00 [INF] Now listening on: http://localhost:63684
+2025-08-18 21:28:44.549 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-08-18 21:28:44.549 +01:00 [INF] Hosting environment: Development
+2025-08-18 21:28:44.549 +01:00 [INF] Content root path: C:\Projects\iRechargeTestProject2nd\iRechargeTestProject.API
+2025-08-18 21:29:46.249 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/index.html - null null
+2025-08-18 21:29:46.880 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/index.html - 200 null text/html;charset=utf-8 654.5763ms
+2025-08-18 21:29:47.177 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 21:29:47.178 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/index.js - null null
+2025-08-18 21:29:47.264 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/index.js - 200 null application/javascript;charset=utf-8 86.0109ms
+2025-08-18 21:29:47.279 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 109.5839ms
+2025-08-18 21:29:47.752 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 21:29:47.895 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 131.8069ms
+2025-08-18 21:30:24.477 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7045/api/Order/create-order - application/json 147
+2025-08-18 21:30:24.488 +01:00 [INF] CORS policy execution failed.
+2025-08-18 21:30:24.490 +01:00 [INF] Request origin https://localhost:7045 does not have permission to access the resource.
+2025-08-18 21:30:24.502 +01:00 [INF] Executing endpoint 'iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API)'
+2025-08-18 21:30:24.564 +01:00 [INF] Route matched with {action = "CreateOrder", controller = "Order"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateOrderAsync(iRechargeTestProject.Application.DTOs.OrderModelDto) on controller iRechargeTestProject.API.Controllers.OrderController (iRechargeTestProject.API).
+2025-08-18 21:30:24.714 +01:00 [INF] Found credentials using the AWS SDK's default credential search
+2025-08-18 21:30:24.976 +01:00 [INF] Executing action method iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API) - Validation state: "Valid"
+2025-08-18 21:30:25.690 +01:00 [INF] Executed DbCommand (111ms) [Parameters=[@p0='?', @p1='?' (DbType = DateTime), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Orders" ("CustomerId", "OrderDate", "ProductId", "Quantity")
+VALUES (@p0, @p1, @p2, @p3)
+RETURNING "Id";
+2025-08-18 21:31:44.174 +01:00 [ERR] An error occurred while creating an order.
+System.Exception: An error occurred while creating the order.
+ ---> Amazon.SQS.Model.QueueDoesNotExistException: The specified queue does not exist.
+ ---> Amazon.Runtime.Internal.HttpErrorResponseException: Exception of type 'Amazon.Runtime.Internal.HttpErrorResponseException' was thrown.
+   at Amazon.Runtime.HttpWebRequestMessage.ProcessHttpResponseMessage(HttpResponseMessage responseMessage)
+   at Amazon.Runtime.HttpWebRequestMessage.GetResponseAsync(CancellationToken cancellationToken)
+   at Amazon.Runtime.Internal.HttpHandler`1.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.Unmarshaller.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.SQS.Internal.ValidationResponseHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.ErrorHandler.InvokeAsync[T](IExecutionContext executionContext)
+   --- End of inner exception stack trace ---
+   at Amazon.Runtime.Internal.HttpErrorResponseExceptionHandler.HandleExceptionStream(IRequestContext requestContext, IWebResponseData httpErrorResponse, HttpErrorResponseException exception, Stream responseStream)
+   at Amazon.Runtime.Internal.HttpErrorResponseExceptionHandler.HandleExceptionAsync(IExecutionContext executionContext, HttpErrorResponseException exception)
+   at Amazon.Runtime.Internal.ExceptionHandler`1.HandleAsync(IExecutionContext executionContext, Exception exception)
+   at Amazon.Runtime.Internal.ErrorHandler.ProcessExceptionAsync(IExecutionContext executionContext, Exception exception)
+   at Amazon.Runtime.Internal.ErrorHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.Signer.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.EndpointDiscoveryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.EndpointDiscoveryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.BaseAuthResolverHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.ErrorCallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.MetricsHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at iRechargeTestProject.Application.Service.SqsService.SendMessageAsync(String queueUrl, String messageBody) in C:\Projects\iRechargeTestProject2nd\iRechargeTestProject.Application\Service\SqsService.cs:line 25
+   at iRechargeTestProject.Application.Service.OrderService.CreateOrderAsync(OrderModelDto order) in C:\Projects\iRechargeTestProject2nd\iRechargeTestProject.Application\Service\OrderService.cs:line 50
+   --- End of inner exception stack trace ---
+   at iRechargeTestProject.Application.Service.OrderService.CreateOrderAsync(OrderModelDto order) in C:\Projects\iRechargeTestProject2nd\iRechargeTestProject.Application\Service\OrderService.cs:line 56
+   at iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync(OrderModelDto order) in C:\Projects\iRechargeTestProject2nd\iRechargeTestProject.API\Controllers\OrderController.cs:line 35
+2025-08-18 21:31:44.262 +01:00 [INF] Executed action method iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 79275.0928ms.
+2025-08-18 21:31:44.286 +01:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType0`2[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-08-18 21:31:44.314 +01:00 [INF] Executed action iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API) in 79738.0698ms
+2025-08-18 21:31:44.316 +01:00 [INF] Executed endpoint 'iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API)'
+2025-08-18 21:31:44.330 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7045/api/Order/create-order - 500 null application/json; charset=utf-8 79853.6621ms
+2025-08-18 21:39:31.248 +01:00 [INF] Executed DbCommand (301ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-08-18 21:39:32.900 +01:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+);
+2025-08-18 21:39:32.928 +01:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-08-18 21:39:32.938 +01:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE
+2025-08-18 21:39:32.941 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-08-18 21:39:32.954 +01:00 [INF] No migrations were applied. The database is already up to date.
+2025-08-18 21:39:33.645 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetRoles" AS a)
+2025-08-18 21:39:33.691 +01:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetUsers" AS a)
+2025-08-18 21:39:33.805 +01:00 [INF] User profile is available. Using 'C:\Users\Naits\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-08-18 21:39:35.059 +01:00 [INF] Now listening on: https://localhost:64152
+2025-08-18 21:39:35.060 +01:00 [INF] Now listening on: http://localhost:64153
+2025-08-18 21:39:35.388 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-08-18 21:39:35.388 +01:00 [INF] Hosting environment: Development
+2025-08-18 21:39:35.389 +01:00 [INF] Content root path: C:\Projects\iRechargeTestProject2nd\iRechargeTestProject.API
+2025-08-18 21:39:37.775 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 21:39:38.042 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 452.6635ms
+2025-08-18 21:39:38.095 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/index.html - null null
+2025-08-18 21:39:38.730 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/index.html - 200 null text/html;charset=utf-8 635.3371ms
+2025-08-18 21:39:39.125 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 21:39:39.127 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 2.2199ms
+2025-08-18 21:39:39.178 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/index.js - null null
+2025-08-18 21:39:39.198 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/index.js - 200 null application/javascript;charset=utf-8 19.6748ms
+2025-08-18 21:39:39.625 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 21:39:39.684 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 59.4133ms
+2025-08-18 21:40:29.880 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7045/api/Order/create-order - application/json 147
+2025-08-18 21:40:29.890 +01:00 [INF] CORS policy execution failed.
+2025-08-18 21:40:29.892 +01:00 [INF] Request origin https://localhost:7045 does not have permission to access the resource.
+2025-08-18 21:40:29.905 +01:00 [INF] Executing endpoint 'iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API)'
+2025-08-18 21:40:29.975 +01:00 [INF] Route matched with {action = "CreateOrder", controller = "Order"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateOrderAsync(iRechargeTestProject.Application.DTOs.OrderModelDto) on controller iRechargeTestProject.API.Controllers.OrderController (iRechargeTestProject.API).
+2025-08-18 21:40:30.086 +01:00 [INF] Found credentials using the AWS SDK's default credential search
+2025-08-18 21:40:30.353 +01:00 [INF] Executing action method iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API) - Validation state: "Valid"
+2025-08-18 21:40:30.819 +01:00 [INF] Executed DbCommand (33ms) [Parameters=[@p0='?', @p1='?' (DbType = DateTime), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Orders" ("CustomerId", "OrderDate", "ProductId", "Quantity")
+VALUES (@p0, @p1, @p2, @p3)
+RETURNING "Id";
+2025-08-18 21:40:59.767 +01:00 [INF] Executed action method iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 29405.7482ms.
+2025-08-18 21:40:59.845 +01:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[iRechargeTestProject.Application.DTOs.OrderModelDto, iRechargeTestProject.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-18 21:40:59.873 +01:00 [INF] Executed action iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API) in 29889.7642ms
+2025-08-18 21:40:59.876 +01:00 [INF] Executed endpoint 'iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API)'
+2025-08-18 21:40:59.889 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7045/api/Order/create-order - 200 null application/json; charset=utf-8 30009.6128ms
+2025-08-18 22:19:15.301 +01:00 [INF] Executed DbCommand (93ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-08-18 22:19:16.794 +01:00 [INF] Executed DbCommand (27ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+);
+2025-08-18 22:19:16.829 +01:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-08-18 22:19:16.857 +01:00 [INF] Executed DbCommand (26ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE
+2025-08-18 22:19:16.873 +01:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-08-18 22:19:16.884 +01:00 [INF] No migrations were applied. The database is already up to date.
+2025-08-18 22:19:17.856 +01:00 [INF] Executed DbCommand (25ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetRoles" AS a)
+2025-08-18 22:19:17.942 +01:00 [INF] Executed DbCommand (36ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetUsers" AS a)
+2025-08-18 22:19:18.327 +01:00 [INF] User profile is available. Using 'C:\Users\Naits\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-08-18 22:19:20.130 +01:00 [INF] SQS Message Processing Service is starting.
+2025-08-18 22:19:20.131 +01:00 [INF] Polling for SQS messages...
+2025-08-18 22:19:20.384 +01:00 [INF] Found credentials using the AWS SDK's default credential search
+2025-08-18 22:20:01.495 +01:00 [INF] Now listening on: https://localhost:50736
+2025-08-18 22:20:01.495 +01:00 [INF] Now listening on: http://localhost:50737
+2025-08-18 22:20:22.367 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-08-18 22:20:22.368 +01:00 [INF] Hosting environment: Development
+2025-08-18 22:20:22.368 +01:00 [INF] Content root path: C:\Projects\iRechargeTestProject2nd\iRechargeTestProject.API
+2025-08-18 22:20:22.711 +01:00 [INF] Executed DbCommand (60ms) [Parameters=[@__productUpdate_ProductId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p."Id", p."Name", p."Price", p."Quantity"
+FROM "Products" AS p
+WHERE p."Id" = @__productUpdate_ProductId_0
+2025-08-18 22:20:30.806 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 22:20:34.573 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/index.html - null null
+2025-08-18 22:20:34.593 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 11879.9012ms
+2025-08-18 22:20:36.730 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 22:20:36.833 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 102.8622ms
+2025-08-18 22:20:37.010 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/index.html - 200 null text/html;charset=utf-8 2437.3293ms
+2025-08-18 22:20:37.510 +01:00 [INF] Executed DbCommand (500ms) [Parameters=[@p3='?' (DbType = Int32), @p0='?', @p1='?' (DbType = Decimal), @p2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Products" SET "Name" = @p0, "Price" = @p1, "Quantity" = @p2
+WHERE "Id" = @p3;
+2025-08-18 22:20:43.075 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 22:20:43.076 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/index.js - null null
+2025-08-18 22:20:43.077 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 2.074ms
+2025-08-18 22:20:43.090 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/index.js - 200 null application/javascript;charset=utf-8 13.6091ms
+2025-08-18 22:20:43.743 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 22:20:43.756 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 13.3535ms
+2025-08-18 22:20:53.244 +01:00 [INF] Polling for SQS messages...
+2025-08-18 22:25:45.383 +01:00 [INF] Executed DbCommand (55ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-08-18 22:25:46.668 +01:00 [INF] Executed DbCommand (33ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+);
+2025-08-18 22:25:46.698 +01:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-08-18 22:25:46.712 +01:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE
+2025-08-18 22:25:46.724 +01:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-08-18 22:25:46.739 +01:00 [INF] No migrations were applied. The database is already up to date.
+2025-08-18 22:25:47.687 +01:00 [INF] Executed DbCommand (36ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetRoles" AS a)
+2025-08-18 22:25:47.763 +01:00 [INF] Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetUsers" AS a)
+2025-08-18 22:25:47.883 +01:00 [INF] User profile is available. Using 'C:\Users\Naits\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-08-18 22:25:49.061 +01:00 [INF] SQS Message Processing Service is starting.
+2025-08-18 22:25:49.063 +01:00 [INF] Polling for SQS messages...
+2025-08-18 22:25:49.305 +01:00 [INF] Found credentials using the AWS SDK's default credential search
+2025-08-18 22:26:20.153 +01:00 [INF] Now listening on: https://localhost:51151
+2025-08-18 22:26:20.153 +01:00 [INF] Now listening on: http://localhost:51152
+2025-08-18 22:26:20.379 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-08-18 22:26:20.379 +01:00 [INF] Hosting environment: Development
+2025-08-18 22:26:20.379 +01:00 [INF] Content root path: C:\Projects\iRechargeTestProject2nd\iRechargeTestProject.API
+2025-08-18 22:26:21.037 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 22:26:21.037 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 22:26:21.097 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 82.2368ms
+2025-08-18 22:26:21.524 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 510.3685ms
+2025-08-18 22:26:23.147 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 22:26:23.170 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 24.0706ms
+2025-08-18 22:26:27.543 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/index.html - null null
+2025-08-18 22:26:27.911 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/index.html - 200 null text/html;charset=utf-8 368.2274ms
+2025-08-18 22:26:28.339 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-18 22:26:28.341 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/_framework/aspnetcore-browser-refresh.js - 200 16533 application/javascript; charset=utf-8 2.3534ms
+2025-08-18 22:26:28.425 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/index.js - null null
+2025-08-18 22:26:28.427 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/index.js - 200 null application/javascript;charset=utf-8 1.7671ms
+2025-08-18 22:26:29.345 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - null null
+2025-08-18 22:26:29.392 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 47.4526ms
+2025-08-18 22:26:34.680 +01:00 [INF] Polling for SQS messages...
+2025-08-18 22:26:49.763 +01:00 [INF] Polling for SQS messages...
+2025-08-18 22:27:04.803 +01:00 [INF] Polling for SQS messages...
+2025-08-18 22:27:19.799 +01:00 [INF] Polling for SQS messages...
+2025-08-18 22:27:34.823 +01:00 [INF] Polling for SQS messages...
+2025-08-18 22:27:41.533 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7045/api/Order/create-order - application/json 147
+2025-08-18 22:27:41.548 +01:00 [INF] CORS policy execution failed.
+2025-08-18 22:27:41.550 +01:00 [INF] Request origin https://localhost:7045 does not have permission to access the resource.
+2025-08-18 22:27:41.568 +01:00 [INF] Executing endpoint 'iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API)'
+2025-08-18 22:27:41.659 +01:00 [INF] Route matched with {action = "CreateOrder", controller = "Order"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateOrderAsync(iRechargeTestProject.Application.DTOs.OrderModelDto) on controller iRechargeTestProject.API.Controllers.OrderController (iRechargeTestProject.API).
+2025-08-18 22:27:41.799 +01:00 [INF] Executing action method iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API) - Validation state: "Valid"
+2025-08-18 22:27:42.430 +01:00 [INF] Executed DbCommand (56ms) [Parameters=[@p0='?', @p1='?' (DbType = DateTime), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Orders" ("CustomerId", "OrderDate", "ProductId", "Quantity")
+VALUES (@p0, @p1, @p2, @p3)
+RETURNING "Id";
+2025-08-18 22:28:04.022 +01:00 [INF] Polling for SQS messages...
+2025-08-18 22:28:04.035 +01:00 [INF] Executed action method iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 22227.1746ms.
+2025-08-18 22:28:04.060 +01:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[iRechargeTestProject.Application.DTOs.OrderModelDto, iRechargeTestProject.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-18 22:28:04.093 +01:00 [INF] Executed action iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API) in 22426.1211ms
+2025-08-18 22:28:04.094 +01:00 [INF] Executed endpoint 'iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API)'
+2025-08-18 22:28:04.115 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7045/api/Order/create-order - 200 null application/json; charset=utf-8 22582.3525ms
+2025-08-18 22:28:04.403 +01:00 [INF] Executed DbCommand (60ms) [Parameters=[@__productUpdate_ProductId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p."Id", p."Name", p."Price", p."Quantity"
+FROM "Products" AS p
+WHERE p."Id" = @__productUpdate_ProductId_0
+2025-08-18 22:28:04.547 +01:00 [INF] Executed DbCommand (58ms) [Parameters=[@p3='?' (DbType = Int32), @p0='?', @p1='?' (DbType = Decimal), @p2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Products" SET "Name" = @p0, "Price" = @p1, "Quantity" = @p2
+WHERE "Id" = @p3;
+2025-08-18 22:28:14.582 +01:00 [INF] Polling for SQS messages...
+2025-08-18 22:28:29.620 +01:00 [INF] Polling for SQS messages...
+2025-08-18 22:29:07.603 +01:00 [INF] Polling for SQS messages...
+2025-08-18 22:29:40.836 +01:00 [INF] Polling for SQS messages...
+2025-08-18 22:29:55.859 +01:00 [INF] Polling for SQS messages...
+2025-08-18 22:30:29.194 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7045/api/Order/create-order - application/json 147
+2025-08-18 22:30:29.205 +01:00 [INF] CORS policy execution failed.
+2025-08-18 22:30:29.205 +01:00 [INF] Request origin https://localhost:7045 does not have permission to access the resource.
+2025-08-18 22:30:29.205 +01:00 [INF] Executing endpoint 'iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API)'
+2025-08-18 22:30:29.206 +01:00 [INF] Route matched with {action = "CreateOrder", controller = "Order"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateOrderAsync(iRechargeTestProject.Application.DTOs.OrderModelDto) on controller iRechargeTestProject.API.Controllers.OrderController (iRechargeTestProject.API).
+2025-08-18 22:30:29.209 +01:00 [INF] Executing action method iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API) - Validation state: "Valid"
+2025-08-18 22:30:29.229 +01:00 [INF] Executed DbCommand (14ms) [Parameters=[@p0='?', @p1='?' (DbType = DateTime), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Orders" ("CustomerId", "OrderDate", "ProductId", "Quantity")
+VALUES (@p0, @p1, @p2, @p3)
+RETURNING "Id";
+2025-08-18 22:30:32.986 +01:00 [INF] Executed action method iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 3775.9908ms.
+2025-08-18 22:30:32.987 +01:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[iRechargeTestProject.Application.DTOs.OrderModelDto, iRechargeTestProject.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-18 22:30:32.988 +01:00 [INF] Polling for SQS messages...
+2025-08-18 22:30:32.989 +01:00 [INF] Executed action iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API) in 3782.5167ms
+2025-08-18 22:30:32.989 +01:00 [INF] Executed endpoint 'iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API)'
+2025-08-18 22:30:32.990 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7045/api/Order/create-order - 200 null application/json; charset=utf-8 3796.0439ms
+2025-08-18 22:30:33.055 +01:00 [INF] Executed DbCommand (24ms) [Parameters=[@__productUpdate_ProductId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p."Id", p."Name", p."Price", p."Quantity"
+FROM "Products" AS p
+WHERE p."Id" = @__productUpdate_ProductId_0
+2025-08-18 22:30:33.082 +01:00 [INF] Executed DbCommand (21ms) [Parameters=[@p3='?' (DbType = Int32), @p0='?', @p1='?' (DbType = Decimal), @p2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Products" SET "Name" = @p0, "Price" = @p1, "Quantity" = @p2
+WHERE "Id" = @p3;
+2025-08-18 22:30:43.153 +01:00 [INF] Polling for SQS messages...
+2025-08-18 22:30:58.187 +01:00 [INF] Polling for SQS messages...
+2025-08-18 22:31:16.622 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7045/api/Order/create-order - application/json 147
+2025-08-18 22:31:16.624 +01:00 [INF] CORS policy execution failed.
+2025-08-18 22:31:16.624 +01:00 [INF] Request origin https://localhost:7045 does not have permission to access the resource.
+2025-08-18 22:31:16.625 +01:00 [INF] Executing endpoint 'iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API)'
+2025-08-18 22:31:16.625 +01:00 [INF] Route matched with {action = "CreateOrder", controller = "Order"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateOrderAsync(iRechargeTestProject.Application.DTOs.OrderModelDto) on controller iRechargeTestProject.API.Controllers.OrderController (iRechargeTestProject.API).
+2025-08-18 22:31:16.629 +01:00 [INF] Executing action method iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API) - Validation state: "Valid"
+2025-08-18 22:31:16.644 +01:00 [INF] Executed DbCommand (13ms) [Parameters=[@p0='?', @p1='?' (DbType = DateTime), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Orders" ("CustomerId", "OrderDate", "ProductId", "Quantity")
+VALUES (@p0, @p1, @p2, @p3)
+RETURNING "Id";
+2025-08-18 22:31:19.608 +01:00 [INF] Executed action method iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2978.8904ms.
+2025-08-18 22:31:19.609 +01:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[iRechargeTestProject.Application.DTOs.OrderModelDto, iRechargeTestProject.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-18 22:31:19.610 +01:00 [INF] Executed action iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API) in 2984.5748ms
+2025-08-18 22:31:19.610 +01:00 [INF] Executed endpoint 'iRechargeTestProject.API.Controllers.OrderController.CreateOrderAsync (iRechargeTestProject.API)'
+2025-08-18 22:31:19.610 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7045/api/Order/create-order - 200 null application/json; charset=utf-8 2987.7099ms
+2025-08-18 22:31:19.851 +01:00 [INF] Polling for SQS messages...
+2025-08-18 22:31:52.558 +01:00 [INF] Executed DbCommand (165ms) [Parameters=[@__productUpdate_ProductId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p."Id", p."Name", p."Price", p."Quantity"
+FROM "Products" AS p
+WHERE p."Id" = @__productUpdate_ProductId_0
+2025-08-18 22:31:52.703 +01:00 [INF] Executed DbCommand (142ms) [Parameters=[@p3='?' (DbType = Int32), @p0='?', @p1='?' (DbType = Decimal), @p2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Products" SET "Name" = @p0, "Price" = @p1, "Quantity" = @p2
+WHERE "Id" = @p3;
+2025-08-18 22:32:02.739 +01:00 [INF] Polling for SQS messages...
+2025-08-18 22:32:26.389 +01:00 [INF] Polling for SQS messages...
+2025-08-18 22:32:41.469 +01:00 [INF] Polling for SQS messages...
+2025-08-18 22:32:45.219 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7045/api/Order/all - null null
+2025-08-18 22:32:45.221 +01:00 [INF] Executing endpoint 'iRechargeTestProject.API.Controllers.OrderController.GetAllOrdersAsync (iRechargeTestProject.API)'
+2025-08-18 22:32:45.231 +01:00 [INF] Route matched with {action = "GetAllOrders", controller = "Order"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllOrdersAsync() on controller iRechargeTestProject.API.Controllers.OrderController (iRechargeTestProject.API).
+2025-08-18 22:32:45.232 +01:00 [INF] Executing action method iRechargeTestProject.API.Controllers.OrderController.GetAllOrdersAsync (iRechargeTestProject.API) - Validation state: "Valid"
+2025-08-18 22:32:45.308 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT o."Id", o."CustomerId", o."OrderDate", o."ProductId", o."Quantity"
+FROM "Orders" AS o
+2025-08-18 22:32:45.317 +01:00 [INF] Executed action method iRechargeTestProject.API.Controllers.OrderController.GetAllOrdersAsync (iRechargeTestProject.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 84.6694ms.
+2025-08-18 22:32:45.317 +01:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`2[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[iRechargeTestProject.Domain.Entities.OrderModel, iRechargeTestProject.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-08-18 22:32:45.370 +01:00 [INF] Executed action iRechargeTestProject.API.Controllers.OrderController.GetAllOrdersAsync (iRechargeTestProject.API) in 137.8792ms
+2025-08-18 22:32:45.370 +01:00 [INF] Executed endpoint 'iRechargeTestProject.API.Controllers.OrderController.GetAllOrdersAsync (iRechargeTestProject.API)'
+2025-08-18 22:32:45.370 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7045/api/Order/all - 200 null application/json; charset=utf-8 151.7216ms
+2025-08-18 22:32:56.505 +01:00 [INF] Polling for SQS messages...
+2025-08-18 22:33:11.545 +01:00 [INF] Polling for SQS messages...
