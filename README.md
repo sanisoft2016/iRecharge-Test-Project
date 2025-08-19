@@ -35,6 +35,10 @@ AWS SDK for SQS
 Ihe project uses localstack/localstack (in place of AWS SDK for SQS) for local development. It serves as a drop-in replacement for the AWS SDK when working with SQS, providing a fully local message queue service without needing access to AWS.
 
 
+
+
+
+
 Startup Workflow
 
 Clone the repository
