@@ -1,16 +1,63 @@
-REQUIREMENT
-A running docker engine, PostgreSQL Database Image, .net 9.0 and .net Aspire for orchestration, localstack/localstack for local development and can be used in place of AWS SDK for SQS for message queue service,
+I go for Option 2: C# ASP.NET Core Web API with PostgreSQL/MySQL and AWS SDK for SQS
+
+Architecture & Design
+Clean Architecture
+The solution follows full Clean Architecture principles, ensuring separation of concerns and maintainability.
+
+Repository Pattern
+A Generic Repository Pattern is used to abstract data access and enforce consistency across the data layer.
+
+Configuration & Secrets
+Environment variables are used for sensitive configuration values (e.g., DB connections, JWT secrets, AWS SQS URL).
+
+Authentication & Authorization
+Implemented using ASP.NET Identity and JWT-based authentication, ensuring secure access to protected endpoints.
+
+Error Logging
+Serilog is used for application-wide logging.
+All errors are automatically logged into:
+The Database (for structured error tracking).
+A text file (for local troubleshooting and audit trails).
+This provides robust observability and makes debugging easier in both local and production environments.
+
+AWS SDK for SQS
+Ihe project uses localstack/localstack (in place of AWS SDK for SQS) for local development. It serves as a drop-in replacement for the AWS SDK when working with SQS, providing a fully local message queue service without needing access to AWS.
 
 
-You must Set environmental variable:
-1.	 setx IRECHARGE_DB_CONNECTION "Host=127.0.0.1;Port=60518;Username=postgreadmin;Password=1234@Abc-56;Database=irechargeDb2nd"
-2.	setx Parameters__sqlportno "60518"
-3.	setx JWT__Secret "JWT093ticationHIGHsecuredPasswordVVVp1OH7Xzyr"
-4.	setx Parameters__sqlusername "postgreadmin"
-5.	setx Parameters__sqlpassword "1234@Abc-56"
-6. setx AWS__SqsQueueUrl http://sqs.af-south-1.localhost.localstack.cloud:4566/000000000000/my-local-queue
+Startup Workflow
 
-   To do Automatic Database migration. always make iRechargeTestProject.AppHost as the start-up project.
-   You need to login using appropriate Credential to access either OrderController and ProductController
-   To access ProductController method, use: Username: admin, password: 123456@Abc
-    To access OrderController method, Register your self as a customer using: localhost:5254/api/Account/customer-self-registeration
+Clone the repository
+git clone https://github.com/sanisoft2016/iRecharge-Test-Project.git and
+Rebuild the solution in Visual Studio 2022 (with .NET 9.0 SDK installed).
+
+Set environment variables (Windows example):
+
+setx IRECHARGE_DB_CONNECTION "Host=127.0.0.1;Port=60518;Username=postgreadmin;Password=1234@Abc-56;Database=irechargeDb2nd"
+setx Parameters__sqlportno "60518"
+setx JWT__Secret "JWT093ticationHIGHsecuredPasswordVVVp1OH7Xzyr"
+setx Parameters__sqlusername "postgreadmin"
+setx Parameters__sqlpassword "1234@Abc-56"
+setx AWS__SqsQueueUrl "http://sqs.af-south-1.localhost.localstack.cloud:4566/000000000000/my-local-queue"
+
+
+⚠️ Important: After setting these variables, close and re-open Visual Studio 2022 for the changes to take effect.
+
+Set iRechargeTestProject.AppHost as the Start-up Project,
+This ensures that the DbContext is created and database migrations run automatically during application startup.
+
+Run the application 🎉
+
+🔐 Authentication & Authorization
+
+ProductController
+Login with:
+Username: admin and Password: 123456@Abc
+
+OrderController
+First register as a customer:
+POST http://localhost:5254/api/Account/customer-self-registeration
+Then log in with your registered credentials to access OrderController endpoints.
+
+📖 API Documentation
+Refer to Swagger UI (available at:
+http://localhost:5254/swagger/index.html) for full API documentation and to interact with all available endpoints.
