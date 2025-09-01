@@ -20,6 +20,7 @@ using System.Configuration;
 using System.Text;
 using System.Text.Json.Serialization;
 
+//For automatic global error logging into the database and text file:
 var postgresConnectionString = Environment.GetEnvironmentVariable("IRECHARGE_DB_CONNECTION");
 if (string.IsNullOrWhiteSpace(postgresConnectionString))
     throw new InvalidOperationException("Database connection string not set.");
@@ -112,6 +113,7 @@ builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
 // Register SqsProductUpdateService
 builder.Services.AddScoped<SqsProductUpdateService>();
+
 
 // Register the background service
 builder.Services.AddHostedService<SqsMessageProcessingService>();

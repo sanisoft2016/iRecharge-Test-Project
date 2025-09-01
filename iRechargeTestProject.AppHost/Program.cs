@@ -16,7 +16,13 @@ var sqlPortNo = builder.Configuration["Parameters:sqlportno"]
 var sqlPortNoInInteger = int.Parse(sqlPortNo);//sqlPortNoInInteger = 60518
 
 
-var postgres = builder.AddPostgres("irechargepostgres12th", username, password, sqlPortNoInInteger)
+
+//var postgres = builder.AddPostgres("irechargepostgres12th", username, password, sqlPortNoInInteger)
+//    .WithImageTag("17.0")
+//    .WithDataVolume(isReadOnly: false)
+//    .WithPgAdmin();
+
+var postgres = builder.AddPostgres("irechargepostgres12th", username, password)
     .WithImageTag("17.0")
     .WithDataVolume(isReadOnly: false)
     .WithPgAdmin();

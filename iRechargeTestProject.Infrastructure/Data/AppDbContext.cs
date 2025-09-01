@@ -78,6 +78,11 @@ namespace iRechargeTestProject.Infrastructure.Data
         }
         public DbSet<ProductModel> Products { get; set; }
         public DbSet<OrderModel> Orders { get; set; }
+
+        public DbSet<Merchant> Merchants { get; set; }
+        public DbSet<PaymentMethod> PaymentMethods { get; set; }
+        public DbSet<Payment> Payments { get; set; }
+
         //public DbSet<Log> Logs { get; set; }
     }
 }

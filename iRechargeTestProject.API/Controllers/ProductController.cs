@@ -1,5 +1,4 @@
 ﻿using DocumentFormat.OpenXml.InkML;
-using iRechargeTestProject.API.Controllers;
 using iRechargeTestProject.Application.IService;
 using iRechargeTestProject.Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
@@ -7,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace Ecommerce.ProductService.Controllers
+namespace iRechargeTestProject.API.Controllers
 {
     [Route("api/[controller]")]
     [Authorize(Roles = "Admin")]
@@ -34,7 +33,7 @@ namespace Ecommerce.ProductService.Controllers
 
             try
             {
-                 var productId = await _productService.CreateProduct(product);
+                var productId = await _productService.CreateProduct(product);
                 product.Id = productId; // Assuming Id is set after creation
                 var returnObject = new { Status = "Success", Data = product };
                 return Ok(returnObject);
@@ -42,7 +41,7 @@ namespace Ecommerce.ProductService.Controllers
             catch (ArgumentNullException ex)
             {
                 _logger.LogWarning(ex, ex.Message);
-                return BadRequest(new { Status = "Error", Message = ex.Message });
+                return BadRequest(new { Status = "Error", ex.Message });
             }
             catch (Exception ex)
             {
@@ -92,7 +91,7 @@ namespace Ecommerce.ProductService.Controllers
             catch (KeyNotFoundException ex)
             {
                 _logger.LogWarning(ex, ex.Message);
-                return NotFound(new { Status = "Error", Message = ex.Message });
+                return NotFound(new { Status = "Error", ex.Message });
             }
             catch (Exception ex)
             {
